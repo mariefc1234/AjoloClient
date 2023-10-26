@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.R
@@ -28,19 +29,20 @@ class LoginViewModel() : ViewModel() {
             try {
                 val userAuth = UserAuth(username, password)
                 val result = getAuthenticationUseCase(userAuth)
-
                 if (result != null) {
                     _loginResult.value =
-                        LoginResult(success = LoggedInUserView(displayName = result.userName))
+                        LoginResult(success = result.userData?.userInfo?.let { LoggedInUserView(displayName = it.userName) })
                     val intent = Intent(context, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(intent)
                 } else {
-                    _loginResult.value = LoginResult(error = R.string.login_failed)
+                    //_loginResult.value = LoginResult(error = R.string.login_failed)
+                    Toast.makeText(context, "EXCEP$result", Toast.LENGTH_LONG).show()
                 }
             } catch (e: Exception) {
                 // Manejar errores si es necesario, por ejemplo, mostrar un mensaje de error
-                _loginResult.value = LoginResult(error = R.string.login_failed)
+                //_loginResult.value = LoginResult(error = R.string.login_failed)
+                Toast.makeText(context, "EXCEP", Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -56,7 +58,7 @@ class LoginViewModel() : ViewModel() {
 
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains('@')) {
+        return if (!username.contains('@')) {
             Patterns.EMAIL_ADDRESS.matcher(username).matches()
         } else {
             username.isNotBlank()

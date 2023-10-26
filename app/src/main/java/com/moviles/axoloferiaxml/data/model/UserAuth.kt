@@ -8,6 +8,6 @@ data class UserAuth (
     @SerializedName("email")
     val email: String,
     @Expose
-    @SerializedName("ps")
-    val ps: String
+    @SerializedName("password")
+    val password: String
 )
