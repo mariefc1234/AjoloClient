@@ -22,13 +22,14 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
-        val username = binding.username
-        val password = binding.password
-        val login = binding.login
+
+        val username = binding.emailEditText
+        val password = binding.passwordEditText
+        val login = binding.loginbtn
         val loading = binding.loading
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
@@ -51,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
             val loginResult = it ?: return@Observer
 
             loading.visibility = View.GONE
+
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -98,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = binding.username.text.toString()
+        val welcome = binding.emailEditText.text.toString()
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
         Toast.makeText(
