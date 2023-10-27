@@ -12,4 +12,6 @@
     <string name="invalid_username">Correo invalido</string>
     <string name="invalid_password">Contraseña mayor a 5 caractess</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="title_more">"More"</string>
+    <string name="shopping">"Shopping"</string>
 </resources>
