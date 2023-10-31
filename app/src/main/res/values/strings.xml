@@ -12,4 +12,10 @@
     <string name="invalid_username">Correo invalido</string>
     <string name="invalid_password">Contraseña mayor a 5 caractess</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="button_top_stall">Popular</string>
+    <string name="button_all_stall">All</string>
+    <string name="item_stall_name">Name</string>
+    <string name="item_stall_price">$$$</string>
+    <string name="item_stall_stars">4.5</string>
+    <string name="item_stall_description">asdfgasdghsadhadgadfgadsgadsfgadfshahadfhadfhadfhadfjadfhjadfjadfhjadfjadfjhadfhadfhadhadfhadfhdafhgadfhahadfhadfhadfhadfghda</string>
 </resources>
