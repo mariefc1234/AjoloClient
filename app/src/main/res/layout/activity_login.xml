@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    android:orientation="vertical"
+    android:paddingStart="16dp"
+    android:paddingTop="5dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="0dp">
+
+    <ImageView
+        android:id="@+id/headerImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/img_up_login"
+        android:contentDescription="Header"
+        android:layout_gravity="end"/>
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajolo"
+        android:fontFamily="@font/kaushanscriptregular"
+        android:textColor="@color/color_primary"
+        android:textSize="55sp"/>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feria"
+        android:fontFamily="@font/kaushanscriptregular"
+        android:textColor="@color/color_primary"
+        android:textSize="85sp"/>
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textSize="20sp"
+        android:inputType="textEmailAddress"
+        android:layout_margin="5dp"/>
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:textSize="20sp"
+        android:inputType="textPassword"
+        android:layout_margin="5dp"/>
+
+    <Button
+        android:id="@+id/loginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Iniciar sesión"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/registerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Nuevo usuario? Regístrate ahora"
+        android:textSize="19dp"
+        android:layout_gravity="center"
+        android:onClick="onRegisterClicked"/>
+
+    <ImageView
+        android:id="@+id/footerImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:contentDescription="Footer"
+        android:src="@drawable/img_dwn_login" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:visibility="gone"/>
+</LinearLayout>
