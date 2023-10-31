@@ -1,12 +1,13 @@
 package com.moviles.axoloferiaxml
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.moviles.axoloferiaxml.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -21,14 +22,27 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
+        val tokenUser = intent.getStringExtra("token")
+        Toast.makeText(this, "GETSTREx $tokenUser", Toast.LENGTH_LONG).show()
+
+        val bundle = Bundle()
+        bundle.putString("token", tokenUser)
+
+
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+
+        //navController.setGraph(R.navigation.mobile_navigation, bundle)
+        //navController.setGraph(navController.graph, bundle)
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
             )
         )
+
+        navController.navigate(R.id.navigation_dashboard, bundle)
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

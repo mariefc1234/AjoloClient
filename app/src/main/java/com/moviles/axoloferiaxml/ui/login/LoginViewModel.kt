@@ -24,6 +24,8 @@ class LoginViewModel() : ViewModel() {
 
     private val getAuthenticationUseCase = GetAuthenticationUserUseCase()
 
+
+
     fun login(username: String, password: String, context: Context) {
         viewModelScope.launch {
             try {
@@ -33,6 +35,8 @@ class LoginViewModel() : ViewModel() {
                     _loginResult.value =
                         LoginResult(success = result.userData?.userInfo?.let { LoggedInUserView(displayName = it.userName) })
                     val intent = Intent(context, MainActivity::class.java)
+                    Toast.makeText(context, result?.userData?.token, Toast.LENGTH_LONG).show()
+                    intent.putExtra("token", result?.userData?.token ?: "ERROR")
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(intent)
                 } else {
