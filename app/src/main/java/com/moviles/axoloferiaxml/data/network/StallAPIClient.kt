@@ -7,5 +7,5 @@ import retrofit2.http.Header
 
 interface StallAPIClient {
     @GET("stalls")
-    suspend fun getStall(@Header("authToken") token: String): Response<Stall>
+    suspend fun getStall(@Header("authtoken") token: String): Response<Stall>
 }
