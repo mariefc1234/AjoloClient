@@ -1,203 +1,485 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:padding="5dp"
-android:background="@color/white"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<androidx.cardview.widget.CardView
-    android:id="@+id/cardShop"
-    android:layout_marginTop="25dp"
-    app:cardElevation="15dp"
-    android:layout_width="350dp"
-    android:layout_height="wrap_content"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:cardCornerRadius="25dp"
-    >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="25dp">
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/title"
-            android:textSize="25dp"
-            android:backgroundTint="@color/black"
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardShop"
+            android:layout_margin="25dp"
+            app:cardElevation="10dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/shopping"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:cardCornerRadius="25dp">
 
-        <LinearLayout
-            android:paddingTop="25dp"
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/titleShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/shopping"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+                    <LinearLayout
+                        android:id="@+id/saleCoins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleShop">
+
+                        <ImageButton
+                            android:id="@+id/shopButton"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/sell"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Sale AjoloCoins"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/historySales"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingStart="15dp"
+                        android:paddingTop="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/saleCoins"
+                        app:layout_constraintTop_toBottomOf="@+id/titleShop"
+                        app:layout_constraintVertical_bias="0.333">
+
+                        <ImageButton
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/history"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Sales history"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/feria"
+            android:layout_margin="25dp"
+            app:cardElevation="10dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="?android:attr/selectableItemBackground"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/cardShop"
+            app:cardCornerRadius="25dp">
 
-            <ImageButton
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/sell"
-                android:scaleType="fitCenter"
-                android:background="?android:attr/selectableItemBackground"
-                tools:ignore="ContentDescription" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sale AjoloCoins"
-                android:paddingTop="4dp"/>
-        </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
 
-        <LinearLayout
-            android:paddingStart="25dp"
-            android:id="@+id/imageButtonHistory"
-            android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/titleFeria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/atractions"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+                    <LinearLayout
+                        android:id="@+id/Atractions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleFeria">
+
+                        <ImageButton
+                            android:id="@+id/atracctionsButton"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/atractions"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Atracctions"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/puesteros"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        android:layout_marginStart="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/Atractions"
+                        app:layout_constraintTop_toBottomOf="@+id/titleFeria">
+
+                    <ImageButton
+                        android:id="@+id/puesterosButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/seller"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Seller"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/events"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        android:layout_marginStart="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/puesteros"
+                        app:layout_constraintTop_toBottomOf="@+id/titleFeria">
+
+                        <ImageButton
+                            android:id="@+id/eventsButtons"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/events"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Events"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/offers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        android:layout_marginStart="25dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/events"
+                        app:layout_constraintTop_toBottomOf="@+id/titleFeria">
+
+                        <ImageButton
+                            android:id="@+id/offersButton"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/offers"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="4dp"
+                            android:text="Offers"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Registers"
+            android:layout_margin="25dp"
+            app:cardElevation="10dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageButton"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintVertical_bias="0.333">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/feria"
+            app:cardCornerRadius="25dp">
 
-            <ImageButton
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:scaleType="fitCenter"
-                android:src="@drawable/history" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:text="Sales history" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/titleRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/registers"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:id="@+id/atraccionRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleRegister">
+
+                    <ImageButton
+                        android:id="@+id/atracctionRegisterButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/atractions"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Atracctions"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/puesterosRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/atraccionRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/titleRegister">
+
+                    <ImageButton
+                        android:id="@+id/sellerRegisterButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/seller"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Seller"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/offersRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/puesterosRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/titleRegister">
+
+                    <ImageButton
+                        android:id="@+id/offersRegisterButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/offers"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Offers"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/admin"
+            android:layout_margin="25dp"
+            app:cardElevation="10dp"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Registers"
+            app:cardCornerRadius="25dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/titleAdmin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/admin"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:id="@+id/employeeRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleAdmin">
+
+                    <ImageButton
+                        android:id="@+id/employeeRegisterButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/atractions"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Atracctions"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/employeRegisterAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/employeeRegister"
+                    app:layout_constraintTop_toBottomOf="@+id/titleAdmin">
+
+                    <ImageButton
+                        android:id="@+id/employeeAdminRegisterButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/employee"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:text="Employee"
+                        android:textSize="10dp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="0dp"
+            android:layout_height="325dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/admin" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="25dp"
-        android:id="@+id/personal"
-        app:cardElevation="15dp"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardShop"
-        app:cardCornerRadius="25dp"
-        >
+</ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="25dp">
 
-            <TextView
-                android:id="@+id/title2"
-                android:textSize="25dp"
-                android:backgroundTint="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Register"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/feria"
-        android:layout_marginTop="25dp"
-        app:cardElevation="15dp"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/personal"
-        app:cardCornerRadius="25dp"
-        >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="25dp">
-
-            <TextView
-                android:id="@+id/title3"
-                android:textSize="25dp"
-                android:backgroundTint="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Feria"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_marginTop="25dp"
-        app:cardElevation="15dp"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/feria"
-        app:cardCornerRadius="25dp"
-        >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="25dp">
-
-            <TextView
-                android:id="@+id/title4"
-                android:textSize="25dp"
-                android:backgroundTint="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Admin panel"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <ImageView
-        android:id="@+id/footerImage"
-        android:layout_width="400dp"
-        android:layout_height="261dp"
-        android:alpha="0.2"
-        android:contentDescription="Footer"
-        android:src="@drawable/img_dwn_login"
-        tools:ignore="MissingConstraints"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:paddingBottom="2dp"
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>

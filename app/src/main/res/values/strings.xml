@@ -14,4 +14,14 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_more">"More"</string>
     <string name="shopping">"Shopping"</string>
+    <string name="atractions">"Atraccions"</string>
+    <string name="registers">"Registers"</string>
+    <string name="admin">"Admin panel"</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_qr">QR</string>
+    <string name="title_fav">Favorites</string>
+    <string name="title_moreUser">More</string>
+    <string name="todo">TODO</string>
+    <string name="footer">Footer</string>
+    <string name="user_name_template">user_name</string>
 </resources>

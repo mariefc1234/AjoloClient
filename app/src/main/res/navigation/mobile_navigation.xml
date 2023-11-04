@@ -8,13 +8,11 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.moviles.axoloferiaxml.ui.home.HomeFragment"
-        android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_more"
         android:name="com.moviles.axoloferiaxml.ui.more.MoreFragment"
-        android:label="@string/title_more"
         tools:layout="@layout/fragment_more" />
 
 </navigation>

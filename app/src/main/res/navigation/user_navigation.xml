@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_navigation"
+    app:startDestination="@+id/navigation_home_user">
+
+    <fragment
+        android:id="@+id/navigation_home_user"
+        android:name="com.moviles.axoloferiaxml.ui.userhome.HomeUserFragment"
+        tools:layout="@layout/home_user" />
+
+    <fragment
+        android:id="@+id/navigation_calendar_user"
+        android:name="com.moviles.axoloferiaxml.ui.usercalendar.CalendarUserFragment"
+        tools:layout="@layout/calendar_user" />
+    <fragment
+        android:id="@+id/navigation_qr_user"
+        android:name="com.moviles.axoloferiaxml.ui.userqr.QrUserFrament"
+        tools:layout="@layout/qr_user" />
+    <fragment
+        android:id="@+id/navigation_fav_user"
+        android:name="com.moviles.axoloferiaxml.ui.userfav.FavUserFragment"
+        tools:layout="@layout/fav_user" />
+    <fragment
+        android:id="@+id/navigation_more_user"
+        android:name="com.moviles.axoloferiaxml.ui.usermore.MoreUserFragment"
+        tools:layout="@layout/more_user" />
+
+</navigation>
