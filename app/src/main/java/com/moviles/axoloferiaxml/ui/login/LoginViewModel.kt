@@ -10,7 +10,6 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.moviles.axoloferiaxml.MainActivity
-import com.moviles.axoloferiaxml.MainUser
 import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.data.model.UserAuth
 import com.moviles.axoloferiaxml.domain.GetAuthenticationUserUseCase
@@ -42,7 +41,7 @@ class LoginViewModel() : ViewModel() {
                                 context.startActivity(intent)
                             }
                             4 -> {
-                                val intent = Intent(context, MainUser::class.java)
+                                val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
                                 context.startActivity(intent)

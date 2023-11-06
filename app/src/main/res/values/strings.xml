@@ -15,7 +15,7 @@
     <string name="title_more">"More"</string>
     <string name="shopping">"Shopping"</string>
     <string name="atractions">"Atraccions"</string>
-    <string name="registers">"Registers"</string>
+    <string name="management">"Management"</string>
     <string name="admin">"Admin panel"</string>
     <string name="title_calendar">Calendar</string>
     <string name="title_qr">QR</string>
@@ -24,4 +24,12 @@
     <string name="todo">TODO</string>
     <string name="footer">Footer</string>
     <string name="user_name_template">user_name</string>
+    <string name="reviews">Reviews</string>
+    <string name="buy_ajolocoins">Buy AjoloCoins</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="support">Support</string>
+    <string name="logout">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
