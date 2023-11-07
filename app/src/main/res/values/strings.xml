@@ -30,6 +30,7 @@
     <string name="language">Language</string>
     <string name="support">Support</string>
     <string name="logout">Logout</string>
+    <string name="history">Shopping history</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

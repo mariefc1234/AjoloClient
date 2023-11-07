@@ -18,6 +18,7 @@ import com.moviles.axoloferiaxml.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var userName = ""
     private  lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if (intent.hasExtra("userName")) {
-            val userName = intent.getStringExtra("userName")
+            userName = intent.getStringExtra("userName").toString()
             supportActionBar?.title = "Hola, $userName"
             val color = ContextCompat.getColor(this, R.color.teal_700)
             supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
@@ -35,12 +36,15 @@ class MainActivity : AppCompatActivity() {
             supportActionBar?.title = "Error"
         }
 
-         
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.navController
         val bottomNavigationView = binding.navView
         setupWithNavController(bottomNavigationView, navController)
 
     }
+
+    fun getUserName(): String {
+        return userName
+    }
+
 }
