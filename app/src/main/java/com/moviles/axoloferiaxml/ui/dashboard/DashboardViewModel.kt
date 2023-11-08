@@ -1,5 +1,6 @@
 package com.moviles.axoloferiaxml.ui.dashboard
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
@@ -7,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
+import com.moviles.axoloferiaxml.core.KeystoreHelper
 import com.moviles.axoloferiaxml.domain.GetQrUseCase
 
 class DashboardViewModel : ViewModel() {
@@ -26,9 +28,10 @@ class DashboardViewModel : ViewModel() {
         myImageView.setImageBitmap(bitmap)
     }*/
 
-    suspend fun generateQRCode(token: String): Bitmap {
+    suspend fun generateQRCode(context: Context): Bitmap {
         val text = "Hello"
-        val result = getQrUseCase(token)
+        val keystoreHelper = KeystoreHelper(context)
+        val result = getQrUseCase(keystoreHelper)
         val encoder = BarcodeEncoder()
         if (result != null) {
             return encoder.encodeBitmap(result.data.qrCode, BarcodeFormat.QR_CODE, 500, 500)

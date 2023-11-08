@@ -1,7 +1,9 @@
 package com.moviles.axoloferiaxml.ui.login
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.R
+import com.moviles.axoloferiaxml.core.KeystoreHelper
 import com.moviles.axoloferiaxml.data.model.UserAuth
 import com.moviles.axoloferiaxml.domain.GetAuthenticationUserUseCase
 import kotlinx.coroutines.launch
@@ -30,13 +33,13 @@ class LoginViewModel() : ViewModel() {
         viewModelScope.launch {
             try {
                 val userAuth = UserAuth(username, password)
-                val result = getAuthenticationUseCase(userAuth)
+                val keystoreHelper = KeystoreHelper(context)
+                val result = getAuthenticationUseCase(userAuth, keystoreHelper)
                 if (result != null) {
                     _loginResult.value =
                         LoginResult(success = result.userData?.userInfo?.let { LoggedInUserView(displayName = it.userName) })
                     val intent = Intent(context, MainActivity::class.java)
-                    Toast.makeText(context, result?.userData?.token, Toast.LENGTH_LONG).show()
-                    intent.putExtra("token", result?.userData?.token ?: "ERROR")
+
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(intent)
                 } else {
@@ -46,7 +49,8 @@ class LoginViewModel() : ViewModel() {
             } catch (e: Exception) {
                 // Manejar errores si es necesario, por ejemplo, mostrar un mensaje de error
                 //_loginResult.value = LoginResult(error = R.string.login_failed)
-                Toast.makeText(context, "EXCEP", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "EXCEP login", Toast.LENGTH_LONG).show()
+                e.printStackTrace()
             }
         }
     }

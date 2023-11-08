@@ -7,10 +7,10 @@ import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.ItemStallBinding
 
 interface StallAdapterListener{
-    fun onStallSelected(stall: Stall.StallData)
+    fun onStallSelected(stall: Stall.StallList.StallData)
 }
 
-class StallAdapter(private val items: MutableList<Stall.StallData>, private val listener: StallAdapterListener): RecyclerView.Adapter<StallViewHolder>() {
+class StallAdapter(private val items: MutableList<Stall.StallList.StallData>, private val listener: StallAdapterListener): RecyclerView.Adapter<StallViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StallViewHolder {
         val view = LayoutInflater.from(parent.context)
         val binding = ItemStallBinding.inflate(view, parent, false)

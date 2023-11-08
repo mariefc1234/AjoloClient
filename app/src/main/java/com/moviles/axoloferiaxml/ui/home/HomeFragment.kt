@@ -1,5 +1,6 @@
 package com.moviles.axoloferiaxml.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentHomeBinding
 import com.moviles.axoloferiaxml.ui.home.adapters.StallAdapter
@@ -29,7 +32,7 @@ class HomeFragment : Fragment(), StallAdapterListener {
 
     private lateinit var  stallViewModel: HomeViewModel
 
-    private val stallList = mutableListOf<Stall.StallData>()
+    private val stallList = mutableListOf<Stall.StallList.StallData>()
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -42,8 +45,6 @@ class HomeFragment : Fragment(), StallAdapterListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val homeViewModel =
-//            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -51,11 +52,6 @@ class HomeFragment : Fragment(), StallAdapterListener {
         viewManager = LinearLayoutManager(context)
         binding.recyclerView.layoutManager = viewManager
         binding.recyclerView.adapter = viewAdapter
-
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         stallViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         stallViewModel.stallResult.observe(viewLifecycleOwner, Observer {
@@ -68,28 +64,19 @@ class HomeFragment : Fragment(), StallAdapterListener {
                 loadStallList(stallResult.success)
             }
 
-            Log.d("xd1", stallResult.success.toString())
-
         })
         getStalls()
         return root
     }
 
     private fun getStalls() {
-        Log.d("xd1", "1")
-        stallViewModel.getStallList(
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmZDQ1YzYxYi02MmM1LTQ1MzYtYjFjMy1iYWIwMjE3M2Y1N2UiLCJ1c2VyQWdlbnQiOiJQb3N0bWFuUnVudGltZS83LjM0LjAiLCJ1c2VySXAiOiI6OmZmZmY6MTkyLjE2OC4wLjMiLCJpYXQiOjE2OTg3NDA4NzMsImV4cCI6MTcwMzkyNDg3M30.W-uAiU-rj8LsoJac-YVt9dDzhFq0W00zW1o_BWxAYoweyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJmZDQ1YzYxYi02MmM1LTQ1MzYtYjFjMy1iYWIwMjE3M2Y1N2UiLCJ1c2VyQWdlbnQiOiJQb3N0bWFuUnVudGltZS83LjM0LjAiLCJ1c2VySXAiOiI6OmZmZmY6MTkyLjE2OC4wLjMiLCJpYXQiOjE2OTg3NDA4NzMsImV4cCI6MTcwMzkyNDg3M30.W-uAiU-rj8LsoJac-YVt9dDzhFq0W00zW1o_BWxAYow",
-            this.requireContext()
-        )
+        stallViewModel.getStallList(this.requireContext())
     }
 
     private fun loadStallList(model: StallView) {
+        stallList.clear()
         stallList.addAll(model.stall)
-        Toast.makeText(
-            context,
-            "funciono",
-            Toast.LENGTH_LONG
-        ).show()
+        viewAdapter.notifyDataSetChanged()
     }
 
     private fun showStallFailed(@StringRes errorString: Int) {
@@ -101,7 +88,14 @@ class HomeFragment : Fragment(), StallAdapterListener {
         _binding = null
     }
 
-    override fun onStallSelected(stall: Stall.StallData) {
-        TODO("Not yet implemented")
+    override fun onStallSelected(stall: Stall.StallList.StallData) {
+        val intent = Intent(context, StallDetailActivity::class.java)
+        val bundle = Bundle()
+        val gson = Gson()
+        val stallJson = gson.toJson(stall)
+        bundle.putString("stall", stallJson)
+        intent.putExtra("stall_key",bundle)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 }

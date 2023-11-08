@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.moviles.axoloferiaxml.core.KeystoreHelper
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.domain.GetStallListUseCase
 import com.moviles.axoloferiaxml.ui.home.adapters.StallAdapterListener
@@ -20,20 +21,25 @@ class HomeViewModel : ViewModel(){
 
     private val getStallListUseCase = GetStallListUseCase()
 
-    fun getStallList(token: String, context: Context) {
+    fun getStallList(context: Context) {
         viewModelScope.launch {
             try {
-                val result = getStallListUseCase(token)
+                val keystoreHelper = KeystoreHelper(context)
+                val result = getStallListUseCase(keystoreHelper)
                 if (result != null) {
                     _stallResult.value = 
-                        StallResult(success = result.stallData.let { StallView( stall = it!!) })
-                    Log.d("xd", result.message)
+                        StallResult(success = result.stallData.stall.let { StallView( stall = it!!) })
+                    _stallResult.value?.success?.stall?.forEach {
+                        Log.d("stall", "$it")
+                    }
                 } else {
-                    Log.d("xd", result?.message ?: "no hay")
+                    _stallResult.value =
+                        StallResult(error = 0)
                     Toast.makeText(context, "EXCEP$result", Toast.LENGTH_LONG).show()
                 }
             } catch (e: Exception) {
                 Toast.makeText(context, "EXCEP", Toast.LENGTH_LONG).show()
+                e.printStackTrace()
             }
         }
     }

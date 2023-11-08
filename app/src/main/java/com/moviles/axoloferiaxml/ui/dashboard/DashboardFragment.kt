@@ -26,18 +26,18 @@ class DashboardFragment : Fragment() {
     //fun setToken(token: String) {
     //    this.token = token
     //}
-    private var token: String? = null
+//    private var token: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val bundle = arguments
-
-        if (bundle != null && bundle.containsKey("token")) {
-            token = bundle.getString("token")
-        }
+//        val bundle = arguments
+//
+//        if (bundle != null && bundle.containsKey("token")) {
+//            token = bundle.getString("token")
+//        }
 
         //Toast.makeText(this.context, "TOKEN $token", Toast.LENGTH_LONG).show()
 
@@ -60,7 +60,7 @@ class DashboardFragment : Fragment() {
 
     private fun initQR(dashboardViewModel: DashboardViewModel) {
             lifecycleScope.launch {
-                val qrCodeBitmap = dashboardViewModel.generateQRCode(token!!)
+                val qrCodeBitmap = dashboardViewModel.generateQRCode(requireContext())
                 val myImageView: ImageView = binding.myImageView
                 myImageView.setImageBitmap(qrCodeBitmap)
             }

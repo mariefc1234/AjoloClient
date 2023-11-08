@@ -22,18 +22,18 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
 
-        val tokenUser = intent.getStringExtra("token")
-        Toast.makeText(this, "GETSTREx $tokenUser", Toast.LENGTH_LONG).show()
-
+//        val tokenUser = intent.getStringExtra("token")
+//        Toast.makeText(this, "GETSTREx $tokenUser", Toast.LENGTH_LONG).show()
+//
         val bundle = Bundle()
-        bundle.putString("token", tokenUser)
+//        bundle.putString("token", tokenUser)
 
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
 
-        //navController.setGraph(R.navigation.mobile_navigation, bundle)
-        //navController.setGraph(navController.graph, bundle)
+        navController.setGraph(R.navigation.mobile_navigation, bundle)
+        navController.setGraph(navController.graph, bundle)
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        navController.navigate(R.id.navigation_dashboard, bundle)
+        navController.navigate(R.id.navigation_home, bundle)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
