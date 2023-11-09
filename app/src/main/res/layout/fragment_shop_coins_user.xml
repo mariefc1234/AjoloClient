@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/footerImage"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:alpha="0.4"
+        android:contentDescription="@string/footer"
+        android:src="@drawable/img_dwn_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:id="@+id/tvPayment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
+                android:text="@string/payment"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardShop"
+                android:layout_margin="25dp"
+                app:cardElevation="10dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tvPayment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:cardCornerRadius="25dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/titleShop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/card"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints,TextSizeCheck"
+                        tools:layout_editor_absoluteY="10dp" />
+
+                    <LinearLayout
+
+                        android:id="@+id/saleCoins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleShop">
+
+                        <ImageButton
+                            android:id="@+id/shopButton"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/card"
+                            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cashPayment"
+                android:layout_margin="25dp"
+                app:cardElevation="10dp"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardShop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:cardCornerRadius="25dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:id="@+id/layoutCash"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/titleCash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/cash"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints,TextSizeCheck"
+                        tools:layout_editor_absoluteY="10dp" />
+
+                    <LinearLayout
+
+                        android:id="@+id/cashPaymentLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:orientation="vertical"
+                        android:paddingTop="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/titleCash">
+
+                        <ImageButton
+                            android:id="@+id/cashButton"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:background="?android:attr/selectableItemBackground"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/cash"
+                            tools:ignore="ContentDescription,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <TextView
+                android:id="@+id/headline"
+                android:layout_width="0dp"
+                android:layout_height="425dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/admin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

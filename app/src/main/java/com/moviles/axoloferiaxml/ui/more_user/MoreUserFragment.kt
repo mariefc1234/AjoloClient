@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
@@ -19,7 +20,6 @@ class MoreUserFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_more_user, container, false)
 
-
         //Funcion Logout
         val logoutButton = root.findViewById<TextView>(R.id.logoutButtonUser)
         logoutButton.setOnClickListener {
@@ -31,6 +31,12 @@ class MoreUserFragment : Fragment() {
         //Asigna Username
         val textViewUsername = root.findViewById<TextView>(R.id.user_username)
         textViewUsername.text = (requireActivity() as MainActivityUser).getUserName()
+
+        // Funcion para Comprar Ajolocoins
+        val shopCoins = root.findViewById<TextView>(R.id.shopCoinsButton)
+        shopCoins.setOnClickListener {
+            findNavController().navigate(R.id.action_moreUserFragment_to_shopCoinsUserFragment)
+        }
 
         return root
     }
