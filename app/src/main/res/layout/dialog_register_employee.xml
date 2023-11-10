@@ -63,7 +63,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                android:inputType="textPassword"
                 tools:ignore="TouchTargetSizeCheck"
                 app:layout_constraintTop_toBottomOf="@id/editTextPassword"
                 />
