@@ -18,4 +18,31 @@
     <string name="item_stall_price">$$$</string>
     <string name="item_stall_stars">4.5</string>
     <string name="item_stall_description">asdfgasdghsadhadgadfgadsgadsfgadfshahadfhadfhadfhadfjadfhjadfjadfhjadfjadfjhadfhadfhadhadfhadfhdafhgadfhahadfhadfhadfhadfghda</string>
+    <string name="title_more">"More"</string>
+    <string name="shopping">"Shopping"</string>
+    <string name="atractions">"Atraccions"</string>
+    <string name="management">"Management"</string>
+    <string name="admin">"Admin panel"</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_qr">QR</string>
+    <string name="title_fav">Favorites</string>
+    <string name="title_moreUser">More</string>
+    <string name="todo">TODO</string>
+    <string name="footer">Footer</string>
+    <string name="user_name_template">user_name</string>
+    <string name="reviews">Reviews</string>
+    <string name="buy_ajolocoins">Buy AjoloCoins</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="support">Support</string>
+    <string name="logout">Logout</string>
+    <string name="history">Shopping history</string>
+    <string name="card">Credit or Debit card</string>
+    <string name="cash">Cash</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="payment">Payment</string>
+    <string name="employees">Employees</string>
+    <string name="new_employee">New Employee</string>
+    <string name="register_new_employee">Register new employee</string>
 </resources>

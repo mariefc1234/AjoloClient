@@ -11,6 +11,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.moviles.axoloferiaxml.MainActivity
+import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.core.KeystoreHelper
 import com.moviles.axoloferiaxml.data.model.UserAuth
@@ -42,18 +43,52 @@ class LoginViewModel() : ViewModel() {
 
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     context.startActivity(intent)
+                    val userInfo = result.userData?.userInfo
+                    if (userInfo != null) {
+                        when (userInfo.roleId) {
+                            1 -> {
+                                val intent = Intent(context, MainActivityUser::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra("userName", userInfo.userName)
+                                context.startActivity(intent)
+                            }
+                            //admin
+                            2 -> {
+                                val intent = Intent(context, MainActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra("userName", userInfo.userName)
+                                context.startActivity(intent)
+                            }
+                            3 -> {
+                                val intent = Intent(context, MainActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra("userName", userInfo.userName)
+                                context.startActivity(intent)
+                            }
+                            //encargada de puesto
+                            4 -> {
+                                Toast.makeText(context, "No", Toast.LENGTH_LONG).show()
+                            }
+                            else -> {
+                                Toast.makeText(context, "Rol desconocido", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
                 } else {
-                    //_loginResult.value = LoginResult(error = R.string.login_failed)
-                    Toast.makeText(context, "EXCEP$result", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Error en la respuesta del servidor", Toast.LENGTH_LONG).show()
                 }
             } catch (e: Exception) {
                 // Manejar errores si es necesario, por ejemplo, mostrar un mensaje de error
                 //_loginResult.value = LoginResult(error = R.string.login_failed)
                 Toast.makeText(context, "EXCEP login", Toast.LENGTH_LONG).show()
                 e.printStackTrace()
+                Log.e("MiTag", "Error en la autenticación", e)
+                Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
             }
         }
     }
+
+
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {
             _loginForm.value = LoginFormState(usernameError = R.string.invalid_username)
@@ -64,7 +99,6 @@ class LoginViewModel() : ViewModel() {
         }
     }
 
-    // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {
         return if (!username.contains('@')) {
             Patterns.EMAIL_ADDRESS.matcher(username).matches()
@@ -73,7 +107,6 @@ class LoginViewModel() : ViewModel() {
         }
     }
 
-    // A placeholder password validation check
     private fun isPasswordValid(password: String): Boolean {
         return password.length > 5
     }

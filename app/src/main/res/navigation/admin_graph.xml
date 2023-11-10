@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_graph"
+    app:startDestination="@id/homeAdminFragment">
+
+    <fragment
+        android:id="@+id/homeAdminFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.HomeAdminFragment"
+        tools:layout="@layout/fragment_home_admin" >
+        <action
+            android:id="@+id/action_homeAdminFragment_to_employeeAdminFragment"
+            app:destination="@id/employeeAdminFragment"
+            app:enterAnim="@animator/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_atranstionsAdminFragment"
+            app:destination="@id/atranstionsAdminFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_atractionsEmployeesFragment"
+            app:destination="@id/atractionsEmployeesFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_offersEmployeesFragment"
+            app:destination="@id/offersEmployeesFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_sellersEmployeesFragment"
+            app:destination="@id/sellersEmployeesFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_eventsEmployeeFragment"
+            app:destination="@id/eventsEmployeeFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_salesCoinsFragment"
+            app:destination="@id/salesCoinsFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_salesHistoryFragment"
+            app:destination="@id/salesHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moreAdminFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_admin.MoreAdminFragment"
+        tools:layout="@layout/fragment_more_admin" >
+    </fragment>
+    <fragment
+        android:id="@+id/employeeAdminFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.employees_admin.EmployeeAdminFragment"
+        android:label="fragment_employee_admin"
+        tools:layout="@layout/fragment_employee_admin" />
+    <fragment
+        android:id="@+id/atranstionsAdminFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.atractions_admin.AtranstionsAdminFragment"
+        android:label="fragment_atranstions_admin"
+        tools:layout="@layout/fragment_atranstions_admin" />
+    <fragment
+        android:id="@+id/atractionsEmployeesFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.management.atractions_employees.AtractionsEmployeesFragment"
+        android:label="fragment_atractions_employees"
+        tools:layout="@layout/fragment_atractions_employees" />
+    <fragment
+        android:id="@+id/offersEmployeesFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.management.offers_employees.OffersEmployeesFragment"
+        android:label="fragment_offers_employees"
+        tools:layout="@layout/fragment_offers_employees" />
+    <fragment
+        android:id="@+id/sellersEmployeesFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.management.sellers_employees.SellersEmployeesFragment"
+        android:label="fragment_sellers_employees"
+        tools:layout="@layout/fragment_sellers_employees" />
+    <fragment
+        android:id="@+id/eventsEmployeeFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.management.events_employees.EventsEmployeeFragment"
+        android:label="fragment_events_employee"
+        tools:layout="@layout/fragment_events_employee" />
+    <fragment
+        android:id="@+id/salesCoinsFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.shopping.sales_coins.SalesCoinsFragment"
+        android:label="fragment_sales_coins"
+        tools:layout="@layout/fragment_sales_coins" />
+    <fragment
+        android:id="@+id/salesHistoryFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.shopping.sales_history.SalesHistoryFragment"
+        android:label="fragment_sales_history"
+        tools:layout="@layout/fragment_sales_history" />
+</navigation>

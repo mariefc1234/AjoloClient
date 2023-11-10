@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_graph"
+    app:startDestination="@id/homeUserFragment">
+
+    <fragment
+        android:id="@+id/homeUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_user.HomeUserFragment"
+        tools:layout="@layout/fragment_home_user" />
+    <fragment
+        android:id="@+id/calendarUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.calendar_user.CalendarUserFragment"
+        tools:layout="@layout/fragment_calendar_user" />
+    <fragment
+        android:id="@+id/favUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.fav_user.FavUserFragment"
+        tools:layout="@layout/fragment_fav_user" />
+    <fragment
+        android:id="@+id/moreUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.MoreUserFragment"
+        tools:layout="@layout/fragment_more_user" >
+        <action
+            android:id="@+id/action_moreUserFragment_to_shopCoinsUserFragment"
+            app:destination="@id/shopCoinsUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/qrUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.qr_user.QrUserFragment"
+        tools:layout="@layout/fragment_qr_user" />
+    <fragment
+        android:id="@+id/shopCoinsUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.ShopCoinsUserFragment"
+        android:label="fragment_shop_coins_user"
+        tools:layout="@layout/fragment_shop_coins_user" />
+
+</navigation>

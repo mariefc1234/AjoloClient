@@ -1,49 +1,51 @@
 package com.moviles.axoloferiaxml
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.moviles.axoloferiaxml.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
+    private var userName = ""
+    private  lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        if (intent.hasExtra("userName")) {
+            userName = intent.getStringExtra("userName").toString()
+            supportActionBar?.title = "Hola, $userName"
+            val color = ContextCompat.getColor(this, R.color.teal_700)
+            supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
+        } else {
+            supportActionBar?.title = "Error"
+        }
 
-//        val tokenUser = intent.getStringExtra("token")
-//        Toast.makeText(this, "GETSTREx $tokenUser", Toast.LENGTH_LONG).show()
-//
-        val bundle = Bundle()
-//        bundle.putString("token", tokenUser)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.navController
+        val bottomNavigationView = binding.navView
+        setupWithNavController(bottomNavigationView, navController)
 
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-
-
-        navController.setGraph(R.navigation.mobile_navigation, bundle)
-        navController.setGraph(navController.graph, bundle)
-
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-
-        navController.navigate(R.id.navigation_home, bundle)
-
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
     }
+
+    fun getUserName(): String {
+        return userName
+    }
+
 }
