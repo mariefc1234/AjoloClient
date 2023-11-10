@@ -35,18 +35,28 @@ class LoginViewModel() : ViewModel() {
                     val userInfo = result.userData?.userInfo
                     if (userInfo != null) {
                         when (userInfo.roleId) {
+                            1 -> {
+                                val intent = Intent(context, MainActivityUser::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra("userName", userInfo.userName)
+                                context.startActivity(intent)
+                            }
+                            //admin
                             2 -> {
                                 val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
                                 context.startActivity(intent)
                             }
-                            4 -> {
-                                val intent = Intent(context, MainActivityUser::class.java)
+                            3 -> {
+                                val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
                                 context.startActivity(intent)
-
+                            }
+                            //encargada de puesto
+                            4 -> {
+                                Toast.makeText(context, "No", Toast.LENGTH_LONG).show()
                             }
                             else -> {
                                 Toast.makeText(context, "Rol desconocido", Toast.LENGTH_LONG).show()
