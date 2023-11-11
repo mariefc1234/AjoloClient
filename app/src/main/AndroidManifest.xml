@@ -42,7 +42,10 @@
             android:name=".MainActivityUser"
             android:exported="true">
         </activity>
-
+        <activity
+            android:name=".MainActivityStall"
+            android:exported="true">
+        </activity>
 
     </application>
 

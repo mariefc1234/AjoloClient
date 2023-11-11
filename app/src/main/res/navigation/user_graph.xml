@@ -33,6 +33,8 @@
         android:id="@+id/shopCoinsUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.ShopCoinsUserFragment"
         android:label="fragment_shop_coins_user"
-        tools:layout="@layout/fragment_shop_coins_user" />
+        tools:layout="@layout/fragment_shop_coins_user" >
+    </fragment>
+
 
 </navigation>

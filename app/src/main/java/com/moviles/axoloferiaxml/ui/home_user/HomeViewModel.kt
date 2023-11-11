@@ -16,7 +16,6 @@ class HomeViewModel : ViewModel(){
 
     private val _stallResult = MutableLiveData<StallResult>()
     val stallResult: LiveData<StallResult> = _stallResult
-
     private val getStallListUseCase = GetStallListUseCase()
 
     fun getStallList(context: Context) {

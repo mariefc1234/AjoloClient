@@ -11,6 +11,7 @@ class UserRepository {
     private val api = UserService()
 
     suspend fun authenticate(userAuth: UserAuth, keystoreHelper: KeystoreHelper): User? {
+
         val response = api.authenticateUser(userAuth = userAuth)
         if (response != null) {
             UserProvider.user = response

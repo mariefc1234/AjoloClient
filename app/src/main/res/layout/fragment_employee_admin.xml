@@ -31,7 +31,7 @@
             <View
                 android:id="@+id/datas"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="400dp"
                 android:background="@color/white"
                 app:layout_constraintTop_toBottomOf="@+id/tvEmployees"
                 />
