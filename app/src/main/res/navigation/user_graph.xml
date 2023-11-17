@@ -33,6 +33,29 @@
         android:id="@+id/shopCoinsUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.ShopCoinsUserFragment"
         android:label="fragment_shop_coins_user"
-        tools:layout="@layout/fragment_shop_coins_user" />
+        tools:layout="@layout/fragment_shop_coins_user" >
+        <action
+            android:id="@+id/action_shopCoinsUserFragment_to_cardUserFragment"
+            app:destination="@id/cardUserFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.CardInfoFragment"
+        android:label="fragment_cards_user"
+        tools:layout="@layout/fragment_card_info" >
+        <action
+            android:id="@+id/action_cardUserFragment_to_registerCardFragment"
+            app:destination="@id/registerCardFragment"
+            app:enterAnim="@animator/nav_default_pop_enter_anim"
+            app:exitAnim="@animator/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_exit_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerCardFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.RegisterCardFragment"
+        android:label="fragment_register_card"
+        tools:layout="@layout/fragment_register_card" />
 
 </navigation>

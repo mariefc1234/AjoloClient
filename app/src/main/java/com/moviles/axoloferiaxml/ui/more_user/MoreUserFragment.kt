@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.ui.login.LoginActivity
