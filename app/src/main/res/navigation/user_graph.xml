@@ -51,11 +51,19 @@
             app:exitAnim="@animator/nav_default_enter_anim"
             app:popEnterAnim="@anim/nav_default_pop_exit_anim"
             app:popExitAnim="@animator/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_cardUserFragment_to_payCardFragment"
+            app:destination="@id/payCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerCardFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.RegisterCardFragment"
         android:label="fragment_register_card"
         tools:layout="@layout/fragment_register_card" />
+    <fragment
+        android:id="@+id/payCardFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.pay_card.PayCardFragment"
+        android:label="fragment_pay_card"
+        tools:layout="@layout/fragment_pay_card" />
 
 </navigation>

@@ -25,17 +25,23 @@ class CardInfoFragment : Fragment() {
         _binding = FragmentCardInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        binding.cardShow.visibility = View.GONE
         binding.loadingSpinner.visibility = View.VISIBLE
-        binding.cardCard.visibility = View.GONE
+        val cardViewData = binding.cardShow.cardData
 
         cardViewModel.cardLiveData.observe(viewLifecycleOwner, Observer { card ->
             binding.loadingSpinner.visibility = View.GONE
             if ((card != null) && card.data.cardExist) {
-                binding.cardCard.visibility = View.VISIBLE
-                binding.titleCard.text = card.data.card.normalizedName
-                binding.tvExpire.text = "Expira el ${card.data.card.cardExpirationMonth}/${card.data.card.cardExpirationYear}"
-                binding.tvCardNumber.text = card.data.card.cardNumber
-                binding.tvCardHolder.text = card.data.card.cardHolder
+                binding.cardShow.visibility = View.VISIBLE
+                binding.btnPay.visibility= View.VISIBLE
+                binding.cardShow.apply {
+                    expiry = "${card.data.card.cardExpirationMonth}${card.data.card.cardExpirationYear}"
+                    number = card.data.card.cardNumber
+                    holder = card.data.card.cardHolder
+                }
+                binding.btnPay.setOnClickListener {
+                    findNavController().navigate(R.id.action_cardUserFragment_to_payCardFragment)
+                }
             } else {
                 binding.tvNoCardWarning.visibility = View.VISIBLE
                 binding.btnAddCard.visibility = View.VISIBLE
