@@ -45,4 +45,6 @@
     <string name="employees">Employees</string>
     <string name="new_employee">New Employee</string>
     <string name="register_new_employee">Register new employee</string>
+    <string name="suport">If you have any questions or need help with a problem, you can call us at any of the following numbers, or contact us through our social networks.</string>
+    <string name="numbers">Phone numbers:\n</string>
 </resources>

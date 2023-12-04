@@ -14,5 +14,13 @@
     <color name="color_dark">#460151</color>
     <color name="color_secundary">#F2B5FC</color>
     <color name="color_tertiary">#B15AC0</color>
-
+    <color name="red">#FF0000</color>
+    
+    <color name="purple_1">#624895</color>
+    <color name="purple_2">#7b5fae</color>
+    <color name="purple_3">#c4a3f9</color>
+    
+    <color name="red_1">#ea4024</color>
+    <color name="red_2">#ef6f50</color>
+    <color name="red_3">#f59f7c</color>
 </resources>

@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.MainActivityUser
@@ -21,7 +23,9 @@ class MoreUserFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_more_user, container, false)
 
         //Funcion Logout
-        val logoutButton = root.findViewById<TextView>(R.id.logoutButtonUser)
+
+
+        val logoutButton = root.findViewById<CardView>(R.id.logoutButtonUser)
         logoutButton.setOnClickListener {
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -33,12 +37,29 @@ class MoreUserFragment : Fragment() {
         textViewUsername.text = (requireActivity() as MainActivityUser).getUserName()
 
         // Funcion para Comprar Ajolocoins
-        val shopCoins = root.findViewById<TextView>(R.id.shopCoinsButton)
+        val shopCoins = root.findViewById<LinearLayout>(R.id.shopCoinsButton)
         shopCoins.setOnClickListener {
             findNavController().navigate(R.id.action_moreUserFragment_to_shopCoinsUserFragment)
         }
+        //Funcion Support
+        val supportBtn = root.findViewById<LinearLayout>(R.id.btnSupport)
+        supportBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_moreUserFragment_to_supportUserFragment)
+        }
+
+        //Funcion Languaje
+        val languajeBtn = root.findViewById<LinearLayout>(R.id.language)
+        languajeBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_moreUserFragment_to_languageUserFragment4)
+        }
 
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val tuActividad = activity as MainActivityUser
+        tuActividad.mostrarBarraNavegacion()
     }
 
 }

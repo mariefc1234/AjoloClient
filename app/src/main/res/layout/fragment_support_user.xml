@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.more_user.support_user.SupportUserFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/supportTv"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Support"
+                android:textSize="50sp"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:id="@+id/cardinfo"
+                app:cardElevation="10dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/supportTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:cardCornerRadius="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+
+                        android:id="@+id/userInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_margin="15dp"
+                            android:id="@+id/user_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/suport"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:id="@+id/cardNumbers"
+                app:cardElevation="10dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardinfo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:cardCornerRadius="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/phoneNumbersTv"
+                            android:layout_margin="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="@string/numbers"
+                            android:textSize="25sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/numer1"
+                            />
+
+                        <TextView
+                            android:id="@+id/numer1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:text="CEL: (228) 499 9833"
+                            android:textSize="25sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/phoneNumbersTv"/>
+
+                    <TextView
+                        android:id="@+id/numer2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="CEL: (228) 499 9833"
+                        android:textSize="25sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/numer1"/>
+                    <TextView
+                        android:id="@+id/numer3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+                        android:text=""
+                        android:textSize="5sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/numer2"/>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:id="@+id/cardSocial"
+                app:cardElevation="10dp"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardNumbers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:cardCornerRadius="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:id="@+id/tvSocialnet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="Social networks:"
+                        android:textSize="25sp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+
+                    <ImageButton
+                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/btnInstagram"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/instagram"
+                        android:onClick="openInstagramProfile"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSocialnet"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btnTikTok"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <ImageButton
+                        android:layout_marginEnd="100dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/btnTikTok"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/tiktok"
+                        android:onClick="openInstagramProfile"
+                        app:layout_constraintStart_toEndOf="@+id/btnInstagram"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSocialnet"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="230dp"
+                app:layout_constraintTop_toBottomOf="@+id/cardSocial"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

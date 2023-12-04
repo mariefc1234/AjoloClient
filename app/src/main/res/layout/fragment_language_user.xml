@@ -1,0 +1,22 @@
+<!-- res/layout/fragment_language_user.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+
+    <Button
+        android:id="@+id/resetToDefaultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="reset" />
+    <Button
+        android:id="@+id/changeSpanish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resetToDefaultButton"
+        android:layout_marginTop="16dp"
+        android:text="español" />
+
+</RelativeLayout>

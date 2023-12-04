@@ -3,18 +3,20 @@ package com.moviles.axoloferiaxml.data.model.user_employee
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class EmployeeRequest (
+data class EmployeeAdd (
     @Expose
     @SerializedName("email")
-    val email: String,
+    var email: String,
+
     @Expose
     @SerializedName("password")
-    val password: String,
+    var ps: String,
+
     @Expose
     @SerializedName("username")
-    val username: String,
+    var username: String,
+
     @Expose
     @SerializedName("id_rol")
-    val idRol: Int
-
+    var idRol: Int
 )

@@ -3,6 +3,8 @@ package com.moviles.axoloferiaxml
 import android.annotation.SuppressLint
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         if (intent.hasExtra("userName")) {
             userName = intent.getStringExtra("userName").toString()
             supportActionBar?.title = "Hola, $userName"
-            val color = ContextCompat.getColor(this, R.color.teal_700)
+            val color = ContextCompat.getColor(this, R.color.purple_1)
             supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
         } else {
             supportActionBar?.title = "Error"
@@ -44,8 +46,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     fun getUserName(): String {
         return userName
+    }
+    fun ocultarBarraNavegacion() {
+        binding.navView.visibility = View.GONE
+    }
+    fun mostrarBarraNavegacion() {
+        binding.navView.visibility = View.VISIBLE
     }
 
 }

@@ -12,7 +12,7 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_employeeAdminFragment"
             app:destination="@id/employeeAdminFragment"
-            app:enterAnim="@animator/nav_default_pop_enter_anim" />
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
         <action
             android:id="@+id/action_homeAdminFragment_to_atranstionsAdminFragment"
             app:destination="@id/atranstionsAdminFragment" />
@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_salesHistoryFragment"
             app:destination="@id/salesHistoryFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_employeeAdmFragment"
+            app:destination="@id/employeeAdmFragment" />
     </fragment>
     <fragment
         android:id="@+id/moreAdminFragment"
@@ -44,7 +47,8 @@
         android:id="@+id/employeeAdminFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.employees_admin.EmployeeAdminFragment"
         android:label="fragment_employee_admin"
-        tools:layout="@layout/fragment_employee_admin" />
+        tools:layout="@layout/fragment_employee_admin" >
+    </fragment>
     <fragment
         android:id="@+id/atranstionsAdminFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.atractions_admin.AtranstionsAdminFragment"
@@ -80,4 +84,9 @@
         android:name="com.moviles.axoloferiaxml.ui.home_admin.shopping.sales_history.SalesHistoryFragment"
         android:label="fragment_sales_history"
         tools:layout="@layout/fragment_sales_history" />
+    <fragment
+        android:id="@+id/employeeAdmFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.employees_admin.EmployeeAdmFragment"
+        android:label="fragment_employee_adm"
+        tools:layout="@layout/fragment_employee_adm" />
 </navigation>
