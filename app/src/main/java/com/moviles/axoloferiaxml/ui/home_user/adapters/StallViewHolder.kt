@@ -12,7 +12,7 @@ class StallViewHolder(private val binding: ItemStallBinding) : RecyclerView.View
             Picasso.get().load(stall?.image_url).into(image)
             name.text = stall?.name
             price.text = "$ ${stall?.cost}"
-            starsLabel.text = stall?.id_stall_type
+            starsLabel.text = stall?.id_stall_type.toString()
             description.text = stall?.description
         }
 

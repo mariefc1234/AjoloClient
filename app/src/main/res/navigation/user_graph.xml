@@ -8,7 +8,14 @@
     <fragment
         android:id="@+id/homeUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_user.HomeUserFragment"
-        tools:layout="@layout/fragment_home_user" />
+        tools:layout="@layout/fragment_home_user" >
+        <argument
+            android:name="stall"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_homeUserFragment_to_stallDetailUserFragment"
+            app:destination="@id/stallDetailUserFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/calendarUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.calendar_user.CalendarUserFragment"
@@ -34,5 +41,13 @@
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.ShopCoinsUserFragment"
         android:label="fragment_shop_coins_user"
         tools:layout="@layout/fragment_shop_coins_user" />
+    <fragment
+        android:id="@+id/stallDetailUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_user.StallDetailFragment"
+        tools:layout="@layout/fragment_stall_detail">
+        <argument
+            android:name="stall"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

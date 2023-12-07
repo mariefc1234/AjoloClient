@@ -54,7 +54,45 @@
         android:id="@+id/atractionsEmployeesFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_admin.management.atractions_employees.AtractionsEmployeesFragment"
         android:label="fragment_atractions_employees"
-        tools:layout="@layout/fragment_atractions_employees" />
+        tools:layout="@layout/fragment_atractions_employees">
+        <argument
+            android:name="stall"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_atractionsEmployeesFragment_to_createStallFragment"
+            app:destination="@id/createStallFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/createStallFragment"
+        android:name="com.moviles.axoloferiaxml.ui.stall_management.create_stall.CreateStallFragment"
+        tools:layout="@layout/fragment_create_stall">
+        <argument
+            android:name="stall"
+            app:argType="string"
+            app:nullable="true"/>
+        <argument
+            android:name="stallholder"
+            app:argType="string"
+            app:nullable="true"/>
+        <action
+            android:id="@+id/action_createStallFragment_to_stallHolderFragment"
+            app:destination="@id/stallHolderFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/stallHolderFragment"
+        android:name="com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder.adapters.StallHolderFragment"
+        tools:layout="@layout/fragment_stallholder">
+        <argument
+            android:name="stall"
+            app:argType="string"
+            app:nullable="true"/>
+        <action
+            android:id="@+id/action_stallHolderFragment_to_createStallFragment"
+            app:destination="@id/createStallFragment"/>
+
+    </fragment>
+
     <fragment
         android:id="@+id/offersEmployeesFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_admin.management.offers_employees.OffersEmployeesFragment"

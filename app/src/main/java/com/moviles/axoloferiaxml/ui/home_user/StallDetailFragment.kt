@@ -1,6 +1,7 @@
 package com.moviles.axoloferiaxml.ui.home_user
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,8 +26,10 @@ class StallDetailFragment : Fragment() {
         _binding = FragmentStallDetailBinding.inflate(inflater, container, false)
 
         // Recuperar el objeto del Bundle
-        val stallJson = arguments?.getString("stall")
-
+//        val stallJson = arguments?.getString("stall")
+        val stallJson = StallDetailFragmentArgs.fromBundle(requireArguments()).stall
+//        val stallJson = Stall.StallList.StallData
+        Log.d("stall2", stallJson ?: "nada")
         if (stallJson != null) {
             val gson = Gson()
             val stall = gson.fromJson(stallJson, Stall.StallList.StallData::class.java)
@@ -41,7 +44,7 @@ class StallDetailFragment : Fragment() {
             Picasso.get().load(stall?.image_url).into(stallImage)
             stallName.text = stall?.name
             stallPrice.text = "$ ${stall?.cost}"
-            stallStars.text = stall?.id_stall_type
+            stallStars.text = stall?.id_stall_type.toString()
             stallDescription.text = stall?.description
         }
     }

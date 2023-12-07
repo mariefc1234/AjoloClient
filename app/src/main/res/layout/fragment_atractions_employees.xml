@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:background="@drawable/shape_home_background"
     tools:context=".ui.home_admin.management.atractions_employees.AtractionsEmployeesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="AtractionsEmployee" />
+    <ImageButton
+        android:id="@+id/stall_create"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_secundary"
+        android:layout_margin="10dp"
+        android:layout_gravity="right"
+        android:src="@drawable/add"/>
 
-</FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="7"
+            tools:listitem="@layout/item_employee_stall"
+            />
+    </ScrollView>
+
+</LinearLayout>

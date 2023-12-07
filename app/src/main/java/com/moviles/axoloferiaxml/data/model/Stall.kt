@@ -12,16 +12,26 @@ data class Stall(
         @SerializedName("stalls") @Expose val stall: MutableList<StallData>?
         ){
         data class StallData(
-            @SerializedName("id") @Expose val id: Int,
-            @SerializedName("id_stall_type") @Expose val id_stall_type: String,
+            @SerializedName("id") @Expose val id: Int?,
+            @SerializedName("id_stall_type") @Expose val id_stall_type: Int,
             @SerializedName("name") @Expose val name: String,
             @SerializedName("description") @Expose val description: String,
-            @SerializedName("image_url") @Expose val image_url: String,
-            @SerializedName("cost") @Expose val cost: String,
-            @SerializedName("minimun_height_cm") @Expose val minimun_height_cm: String,
-            @SerializedName("enabled") @Expose val enabled: String,
-            @SerializedName("createdAt") @Expose val createdAt: String,
-            @SerializedName("updatedAt") @Expose val updatedAt: String
+            @SerializedName("image_url") @Expose val image_url: String?,
+            @SerializedName("cost") @Expose val cost: Int,
+            @SerializedName("minimun_height_cm") @Expose val minimun_height_cm: Int,
+            @SerializedName("uuid_employeer") @Expose val uuidEmployeer: String,
+            @SerializedName("enabled") @Expose val enabled: String?,
+            @SerializedName("createdAt") @Expose val createdAt: String?,
+            @SerializedName("updatedAt") @Expose val updatedAt: String?
         )
     }
 }
+
+data class StallCreate(
+    @SerializedName("id_stall_type") @Expose val id_stall_type: Int,
+    @SerializedName("name") @Expose val name: String,
+    @SerializedName("description") @Expose val description: String,
+    @SerializedName("cost") @Expose val cost: Int,
+    @SerializedName("minimun_height_cm") @Expose val minimun_height_cm: Int,
+    @SerializedName("uuid_employeer") @Expose val uuidEmployeer: String,
+)

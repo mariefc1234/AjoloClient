@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Foto"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/user" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="nombrefoto"
+        android:layout_marginBottom="40dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Nombre:"/>
+        <EditText
+            android:id="@+id/stall_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Nombre"
+            android:background="@drawable/input"
+            android:paddingHorizontal="14dp"
+            android:textSize="20sp"
+            android:inputType="textPersonName" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Nombre:"/>
+        <TextView
+            android:id="@+id/stall_stallholder"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Empleado"
+            android:background="@drawable/input"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="5dp"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Altura mínima"/>
+        <EditText
+            android:id="@+id/stall_minimun_height"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Nombre"
+            android:background="@drawable/input"
+            android:paddingHorizontal="14dp"
+            android:textSize="20sp"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:text="Disponibilidad"/>
+        <EditText
+            android:id="@+id/stall_enabled"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Nombre"
+            android:background="@drawable/input"
+            android:paddingHorizontal="14dp"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Descripción"/>
+        <EditText
+            android:id="@+id/stall_description"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Nombre"
+            android:background="@drawable/input"
+            android:paddingHorizontal="14dp"
+            android:textSize="20sp"
+            android:inputType="textPersonName"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Precio"/>
+        <EditText
+            android:id="@+id/stall_cost"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Nombre"
+            android:background="@drawable/input"
+            android:paddingHorizontal="14dp"
+            android:textSize="20sp"
+            android:inputType="textPersonName" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:text="Ultima actualización"/>
+        <EditText
+            android:id="@+id/stall_updated_at"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="Nombre"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:visibility="gone"
+            android:enabled="false"/>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/stall_save"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Save" />
+    <Button
+        android:id="@+id/stall_cancel"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/color_tertiary"
+        android:text="Cancel" />
+
+</LinearLayout>
