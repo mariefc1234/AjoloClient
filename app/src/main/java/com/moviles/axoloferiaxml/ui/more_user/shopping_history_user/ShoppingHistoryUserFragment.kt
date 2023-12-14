@@ -54,7 +54,7 @@ class ShoppingHistoryUserFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val keystoreHelper = KeystoreHelper(requireContext()).getToken()
-                val call = RetrofitClientSales.webServiceSales.getShoppings(keystoreHelper,uuid)
+                val call = RetrofitClientSales.webServiceSales.getShoppings(keystoreHelper)
                 if (call.isSuccessful) {
                     val sales = call.body()
                     sales?.let {
