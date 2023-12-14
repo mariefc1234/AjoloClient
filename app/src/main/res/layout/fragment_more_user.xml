@@ -54,12 +54,22 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
+                            android:id="@+id/user_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
+                            android:layout_marginStart="30dp"
                             android:background="?android:attr/selectableItemBackground"
                             android:scaleType="fitCenter"
                             android:src="@drawable/user"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+                        <ImageView
+                            android:id="@+id/editIcon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:src="@drawable/edit"
+                            android:background="?android:attr/selectableItemBackground"/>
 
                         <TextView
                             android:id="@+id/user_username"
@@ -68,6 +78,8 @@
                             android:layout_height="wrap_content"
                             android:text="template"
                             android:textSize="30sp" />
+
+
 
                     </LinearLayout>
 
