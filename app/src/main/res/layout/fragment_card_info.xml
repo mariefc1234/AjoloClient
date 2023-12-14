@@ -93,7 +93,8 @@
                 app:cardHolderLabel="Holder"
                 app:cardNumber="5201284799337668"
                 tools:layout_editor_absoluteX="39dp"
-                tools:layout_editor_absoluteY="0dp" />
+                tools:layout_editor_absoluteY="0dp"
+                tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/btnPay"

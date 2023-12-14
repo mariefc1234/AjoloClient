@@ -1,25 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.more_user.shop_coins_user.cardShop.RegisterCardFragment">
 
-    <com.maxpilotto.creditcardview.CreditCardView
-        android:id="@+id/cardShow"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        app:cardCvv="123"
-        app:cardExpiry="1234"
-        app:cardHolder="John Doe"
-        app:cardNumber="4242284799337668"
-        app:cardHolderLabel="Holder"
-        app:cardExpiryLabel="Expiry"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HOla"/>
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <com.maxpilotto.creditcardview.CreditCardView
+            android:id="@+id/cardShow"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            app:cardHolderLabel="Holder"
+            app:cardExpiryLabel="Expiry" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/holderInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Titular de la Tarjeta">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/holderEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cardNumberInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Número de Tarjeta">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cardNumberEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/expirationDateInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Fecha de Vencimiento">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/expirationDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="7"
+                android:hint="MM/YYYY"
+                android:digits="0123456789/"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/addCardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:text="Add Card" />
+    </LinearLayout>
 </FrameLayout>
