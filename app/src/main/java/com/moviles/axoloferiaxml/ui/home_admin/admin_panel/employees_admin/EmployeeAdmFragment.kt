@@ -51,20 +51,16 @@ class EmployeeAdmFragment : Fragment(), EmployeeAdapter.OnItemClicked {
 
         binding.btnAddUpdate.setOnClickListener{
             val isValidated = validateFields()
-            Log.e("btnUpdate", "Entro")
-
             if(isValidated){
                 if (!isEditating) {
                     addEmployee()
                 } else {
-                    Log.e("before funcion", "Entro")
                     actualizarUsuario()
                 }
             }else {
-                Toast.makeText(requireContext(), "Se deben llenar los campos", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Campos vacios", Toast.LENGTH_LONG).show()
             }
         }
-
         return binding.root
     }
 
@@ -167,10 +163,8 @@ class EmployeeAdmFragment : Fragment(), EmployeeAdapter.OnItemClicked {
 
 
     fun actualizarUsuario() {
-        Log.e("enFuncion", "Entro")
         var employeeEdit = EmployeeEdit(binding.etNombre.text.toString(), binding.etEmail.text.toString())
         val keystoreHelper = KeystoreHelper(requireContext()).getToken()
-        Log.e("beforesucces", "Entro")
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -180,7 +174,7 @@ class EmployeeAdmFragment : Fragment(), EmployeeAdapter.OnItemClicked {
                         getEmployees()
                         cleanFields()
                         cleanObject()
-                        binding.btnAddUpdate.setText("Add employee")
+                        binding.btnAddUpdate.setText(getString(R.string.add_employeeBtn))
                         isEditating = false
                         Toast.makeText(requireContext(), "${call.body()!!.data.username} fue actualizado", Toast.LENGTH_LONG).show()
                     } else {
@@ -206,7 +200,7 @@ class EmployeeAdmFragment : Fragment(), EmployeeAdapter.OnItemClicked {
         binding.password.isEnabled = false
         binding.password.isFocusable = false
         binding.password.isFocusableInTouchMode = false
-        binding.btnAddUpdate.setText("Actualizar Usuario")
+        binding.btnAddUpdate.setText(getString(R.string.update_user))
         binding.btnAddUpdate.backgroundTintList = resources.getColorStateList(R.color.purple_1)
         this.uuid = usuario.uuid
         isEditating = true
@@ -236,7 +230,6 @@ class EmployeeAdmFragment : Fragment(), EmployeeAdapter.OnItemClicked {
             }
         }
     }
-
 
 }
 

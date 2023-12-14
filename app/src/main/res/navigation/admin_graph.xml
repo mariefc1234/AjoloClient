@@ -10,10 +10,6 @@
         android:name="com.moviles.axoloferiaxml.ui.home_admin.HomeAdminFragment"
         tools:layout="@layout/fragment_home_admin" >
         <action
-            android:id="@+id/action_homeAdminFragment_to_employeeAdminFragment"
-            app:destination="@id/employeeAdminFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim" />
-        <action
             android:id="@+id/action_homeAdminFragment_to_atranstionsAdminFragment"
             app:destination="@id/atranstionsAdminFragment" />
         <action
@@ -32,9 +28,6 @@
             android:id="@+id/action_homeAdminFragment_to_salesCoinsFragment"
             app:destination="@id/salesCoinsFragment" />
         <action
-            android:id="@+id/action_homeAdminFragment_to_salesHistoryFragment"
-            app:destination="@id/salesHistoryFragment" />
-        <action
             android:id="@+id/action_homeAdminFragment_to_employeeAdmFragment"
             app:destination="@id/employeeAdmFragment" />
     </fragment>
@@ -42,12 +35,12 @@
         android:id="@+id/moreAdminFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_admin.MoreAdminFragment"
         tools:layout="@layout/fragment_more_admin" >
-    </fragment>
-    <fragment
-        android:id="@+id/employeeAdminFragment"
-        android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.employees_admin.EmployeeAdminFragment"
-        android:label="fragment_employee_admin"
-        tools:layout="@layout/fragment_employee_admin" >
+        <action
+            android:id="@+id/action_moreAdminFragment_to_languageUserFragment"
+            app:destination="@id/languageUserFragment" />
+        <action
+            android:id="@+id/action_moreAdminFragment_to_supportUserFragment2"
+            app:destination="@id/supportUserFragment2" />
     </fragment>
     <fragment
         android:id="@+id/atranstionsAdminFragment"
@@ -78,15 +71,32 @@
         android:id="@+id/salesCoinsFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_admin.shopping.sales_coins.SalesCoinsFragment"
         android:label="fragment_sales_coins"
-        tools:layout="@layout/fragment_sales_coins" />
-    <fragment
-        android:id="@+id/salesHistoryFragment"
-        android:name="com.moviles.axoloferiaxml.ui.home_admin.shopping.sales_history.SalesHistoryFragment"
-        android:label="fragment_sales_history"
-        tools:layout="@layout/fragment_sales_history" />
+        tools:layout="@layout/fragment_sales_coins" >
+        <action
+            android:id="@+id/action_salesCoinsFragment_to_saleSumaryFragment"
+            app:destination="@id/saleSumaryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/employeeAdmFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_admin.admin_panel.employees_admin.EmployeeAdmFragment"
         android:label="fragment_employee_adm"
         tools:layout="@layout/fragment_employee_adm" />
+    <fragment
+        android:id="@+id/saleSumaryFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_admin.shopping.sales_coins.sales_sumary_coins.SaleSumaryFragment"
+        android:label="fragment_sale_sumary"
+        tools:layout="@layout/fragment_sale_sumary" >
+        <action
+            android:id="@+id/action_saleSumaryFragment_to_salesCoinsFragment"
+            app:destination="@id/salesCoinsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/supportUserFragment2"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.support_user.SupportUserFragment"
+        android:label="fragment_support_user"
+        tools:layout="@layout/fragment_support_user" />
+    <fragment
+        android:id="@+id/languageUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.language_user.LanguageUserFragment"
+        android:label="LanguageUserFragment" />
 </navigation>

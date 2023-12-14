@@ -23,4 +23,9 @@
     <color name="red_1">#ea4024</color>
     <color name="red_2">#ef6f50</color>
     <color name="red_3">#f59f7c</color>
+
+
+    <color name="gray">	#808080</color>
+    <color name="gray_2">#8c8c8c</color>
+    <color name="green">#008000</color>
 </resources>

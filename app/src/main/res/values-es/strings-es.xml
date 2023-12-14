@@ -47,4 +47,15 @@
     <string name="register_new_employee">Registrar nuevo empleado</string>
     <string name="suport">Si tienes alguna pregunta o necesitas ayuda con un problema, puedes llamarnos a cualquiera de los siguientes números o contactarnos a través de nuestras redes sociales.</string>
     <string name="numbers">Números de teléfono:\n</string>
+    <string name="more">Mas</string>
+    <string name="moreExplained">Cambia el idioma de la aplicación sin necesidad de reiniciarla</string>
+    <string name="options">Opciones:</string>
+    <string name="english">Ingles</string>
+    <string name="spanish">Español</string>
+    <string name="welcomeMessage">"Hola, "</string>
+    <string name="myqrExplained">Usalo para identificarte en los puestos o para comprar ajolocoins en la taquilla\n</string>
+    <string name="add_employeeBtn">Añadir empleado</string>
+    <string name="update_user">Actualizar usuario</string>
+    <string name="status_valid">Valido</string>
+    <string name="status_invalid">No valido</string>
 </resources>

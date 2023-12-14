@@ -115,11 +115,10 @@
                             android:layout_marginEnd="15dp"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         <TextView
-                            android:layout_width="100dp"
+                            android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:text="@string/reviews"
                             android:textSize="20sp"
-                            android:layout_marginEnd="140dp"
                             />
                         <TextView
                             android:layout_width="20dp"
@@ -164,11 +163,10 @@
                             android:layout_marginEnd="15dp"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         <TextView
-                            android:layout_width="150dp"
+                            android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:text="@string/buy_ajolocoins"
                             android:textSize="20sp"
-                            android:layout_marginEnd="90dp"
                             />
                         <TextView
                             android:layout_width="20dp"
@@ -247,52 +245,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <LinearLayout
-                        android:clickable="true"
-                        android:layout_marginTop="5dp"
-                        android:id="@+id/settings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="?android:attr/selectableItemBackground"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/settings"
-                            android:layout_marginStart="25dp"
-                            android:layout_marginEnd="15dp"
-                            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-                        <TextView
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/settings"
-                            android:textSize="20sp"
-                            android:layout_marginEnd="140dp"
-                            />
-                        <TextView
-                            android:layout_width="20dp"
-                            android:layout_height="wrap_content"
-                            android:text=">"
-                            android:textSize="30sp" />
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/separator3"
-                        app:layout_constraintTop_toBottomOf="@+id/settings"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_width="270dp"
-                        android:layout_height="1dp"
-                        android:background="@color/color_primary"
-                        />
 
                     <LinearLayout
                         android:layout_marginTop="5dp"
@@ -304,7 +257,7 @@
                         android:orientation="horizontal"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/separator3"
+                        app:layout_constraintTop_toTopOf="parent"
                         android:clickable="true"
                         >
 
@@ -318,11 +271,11 @@
                             android:layout_marginEnd="15dp"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         <TextView
-                            android:layout_width="150dp"
+                            android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:text="@string/language"
                             android:textSize="20sp"
-                            android:layout_marginEnd="90dp"
+
                             />
                         <TextView
                             android:layout_width="20dp"
@@ -366,11 +319,10 @@
                             android:layout_marginEnd="15dp"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                         <TextView
-                            android:layout_width="150dp"
+                            android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:text="@string/support"
                             android:textSize="20sp"
-                            android:layout_marginEnd="90dp"
                             />
                         <TextView
                             android:layout_width="20dp"
@@ -426,11 +378,10 @@
                             app:tint="@color/white" />
                         <TextView
                             android:textColor="@color/white"
-                            android:layout_width="100dp"
+                            android:layout_width="250dp"
                             android:layout_height="wrap_content"
                             android:text="@string/logout"
                             android:textSize="20sp"
-                            android:layout_marginEnd="140dp"
                             />
                         <TextView
                             android:textColor="@color/white"

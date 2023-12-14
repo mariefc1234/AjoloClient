@@ -47,4 +47,17 @@
     <string name="register_new_employee">Register new employee</string>
     <string name="suport">If you have any questions or need help with a problem, you can call us at any of the following numbers, or contact us through our social networks.</string>
     <string name="numbers">Phone numbers:\n</string>
+    <string name="more">More</string>
+    <string name="moreExplained">Change the language of the application without having to restart it</string>
+    <string name="options">Options:</string>
+    <string name="english">English</string>
+    <string name="spanish">Spanish</string>
+    <string name="welcomeMessage">"Hi, "</string>
+    <string name="myqrExplained">Use it to identify yourself at the stalls or to buy ajolocoins at the ticket office\n</string>
+    <string name="add_employeeBtn">Add employee</string>
+    <string name="update_user">Update user</string>
+    <string name="status_valid">Valid</string>
+    <string name="status_invalid">Invalid</string>
+
+    
 </resources>

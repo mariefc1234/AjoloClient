@@ -17,7 +17,9 @@ import java.util.Locale
 
 class MainActivityUser : AppCompatActivity() {
 
+    private var uuid = ""
     private var userName = ""
+    private var coins = ""
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainUserBinding
 
@@ -26,9 +28,12 @@ class MainActivityUser : AppCompatActivity() {
         binding = ActivityMainUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        uuid = intent.getStringExtra("uuid").toString()
+        coins = intent.getStringExtra("coins")!!.toDouble().toInt().toString()
+
         if (intent.hasExtra("userName")) {
             userName = intent.getStringExtra("userName").toString()
-            supportActionBar?.title = "Hola, $userName"
+            supportActionBar?.title = getString(R.string.welcomeMessage) + userName
             val color = ContextCompat.getColor(this, R.color.color_primary)
             supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
         } else {
@@ -52,8 +57,15 @@ class MainActivityUser : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
     }
 
+    fun getUserCoins(): String {
+        return coins
+    }
+
     fun getUserName(): String {
         return userName
+    }
+    fun getUserUuid(): String {
+        return uuid
     }
     fun ocultarBarraNavegacion() {
         binding.navViewUser.visibility = View.GONE

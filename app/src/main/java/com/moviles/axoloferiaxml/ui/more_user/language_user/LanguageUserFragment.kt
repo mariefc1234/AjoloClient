@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
 import java.util.Locale
 
@@ -24,7 +25,7 @@ class LanguageUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_language_user, container, false)
-
+        ocultarBarraNavegacion()
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
         val resetToDefaultButton: Button = root.findViewById(R.id.resetToDefaultButton)
@@ -59,5 +60,12 @@ class LanguageUserFragment : Fragment() {
         val config = resources.configuration
         config.locale = locale
         resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    private fun ocultarBarraNavegacion() {
+        if (activity is MainActivityUser) {
+            val tuActividad = activity as MainActivityUser
+            tuActividad.ocultarBarraNavegacion()
+        }
     }
 }

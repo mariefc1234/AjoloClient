@@ -53,6 +53,12 @@ class MoreUserFragment : Fragment() {
             findNavController().navigate(R.id.action_moreUserFragment_to_languageUserFragment4)
         }
 
+        //Funcion shop History
+        val historyReviewBtn = root.findViewById<LinearLayout>(R.id.historyReview)
+        historyReviewBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_moreUserFragment_to_shoppingHistoryUserFragment)
+        }
+
         return root
     }
 

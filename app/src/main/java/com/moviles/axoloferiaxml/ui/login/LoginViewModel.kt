@@ -51,6 +51,8 @@ class LoginViewModel() : ViewModel() {
                                 val intent = Intent(context, MainActivityUser::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
+                                intent.putExtra("uuid", userInfo.uuid)
+                                intent.putExtra("coins", userInfo.coins.toString())
                                 context.startActivity(intent)
                             }
                             //admin
@@ -58,12 +60,14 @@ class LoginViewModel() : ViewModel() {
                                 val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
+                                intent.putExtra("role", userInfo.roleId.toString())
                                 context.startActivity(intent)
                             }
                             3 -> {
                                 val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
+                                intent.putExtra("role", userInfo.roleId.toString())
                                 context.startActivity(intent)
                             }
                             //encargada de puesto

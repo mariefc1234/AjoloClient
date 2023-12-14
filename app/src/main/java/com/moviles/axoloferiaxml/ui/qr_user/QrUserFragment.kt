@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.moviles.axoloferiaxml.MainActivityUser
+import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.databinding.FragmentQrUserBinding
 import kotlinx.coroutines.launch
 
@@ -22,12 +24,14 @@ class QrUserFragment : Fragment() {
         val qrUserViewModel = ViewModelProvider(this).get(QrUserViewModel::class.java)
         _binding = FragmentQrUserBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        val textView: TextView = binding.textQr
 
         /*
         qrUserViewModel.text.observe(viewLifecycleOwner) {
             textView.text = "AJOLOFERIA"
         }*/
+
+        val textviewCoins = binding.userCoins
+        textviewCoins.text = (requireActivity() as MainActivityUser).getUserCoins()
 
         initQR(qrUserViewModel)
 

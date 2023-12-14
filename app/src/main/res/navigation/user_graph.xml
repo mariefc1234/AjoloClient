@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_moreUserFragment_to_languageUserFragment4"
             app:destination="@id/languageUserFragment4" />
+        <action
+            android:id="@+id/action_moreUserFragment_to_shoppingHistoryUserFragment"
+            app:destination="@id/shoppingHistoryUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/qrUserFragment"
@@ -51,6 +54,11 @@
         android:id="@+id/languageUserFragment4"
         android:name="com.moviles.axoloferiaxml.ui.more_user.language_user.LanguageUserFragment"
         android:label="LanguageUserFragment" />
+    <fragment
+        android:id="@+id/shoppingHistoryUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shopping_history_user.ShoppingHistoryUserFragment"
+        android:label="fragment_shopping_history_user"
+        tools:layout="@layout/fragment_shopping_history_user" />
 
 
 </navigation>
