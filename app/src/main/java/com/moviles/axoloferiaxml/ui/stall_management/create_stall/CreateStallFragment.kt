@@ -100,7 +100,7 @@ class CreateStallFragment: Fragment() {
             stallMinimunHeight.setText(stall.minimun_height_cm.toString())
             stallDescription.setText(stall.description)
             stallCost.setText(stall.cost.toString())
-            stallStallholder.text = stall.uuidEmployeer
+            stallStallholder.setText(stall.uuidEmployeer)
         }
     }
 
@@ -146,7 +146,11 @@ class CreateStallFragment: Fragment() {
 
             val minimunHeightInt: Int = if(minimunHeight.isBlank()) 0 else minimunHeight.toInt()
             val costInt = if(cost.isBlank()) 0 else cost.toInt()
+            val stallJson: String? = CreateStallFragmentArgs.fromBundle(requireArguments()).stall
+            val gson = Gson()
+            val id = gson.fromJson(stallJson, StallCreate::class.java).id ?: 0
             val stall = StallCreate(
+                id = id,
                 id_stall_type = 1,
                 name = name,
                 minimun_height_cm = minimunHeightInt,

@@ -23,13 +23,14 @@ interface StallAPIClient {
         @Header("authtoken") token: String
     ): Response<GenericResponse>
 
-    @PUT("stalls/update")
+    @PUT("stalls/update/{stallId}")
     suspend fun updateStall(
         @Body stall: StallCreate,
+        @Path("stallId") stallId: Int,
         @Header("authtoken") token: String
     ): Response<GenericResponse>
 
-    @DELETE("stalls/{stallId}")
+    @DELETE("stalls/delete/{stallId}")
     suspend fun deleteStall(
         @Header("authtoken") token: String,
         @Path("stallId") stallId: Int

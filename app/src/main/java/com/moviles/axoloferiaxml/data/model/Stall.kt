@@ -28,6 +28,7 @@ data class Stall(
 }
 
 data class StallCreate(
+    @SerializedName("id") @Expose val id: Int?,
     @SerializedName("id_stall_type") @Expose val id_stall_type: Int,
     @SerializedName("name") @Expose val name: String,
     @SerializedName("description") @Expose val description: String,

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.moviles.axoloferiaxml.R
+import com.moviles.axoloferiaxml.data.model.GenericResponse
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentAtractionsEmployeesBinding
 import com.moviles.axoloferiaxml.databinding.FragmentHomeUserBinding
@@ -54,6 +55,7 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
         binding.recyclerView.layoutManager = viewManager
         binding.recyclerView.adapter = viewAdapter
         stallViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        stallManagementViewModel = ViewModelProvider(this).get(StallViewModel::class.java)
 
         stallViewModel.stallResult.observe(viewLifecycleOwner, Observer {
             val stallResult = it ?: return@Observer
@@ -66,11 +68,29 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
             }
 
         })
+        stallManagementViewModel.stallDeleteResult.observe(viewLifecycleOwner, Observer {
+            val stallDeleteResult = it ?: return@Observer
+            if (stallDeleteResult.error != null) {
+                showStallDeleteFailed(stallDeleteResult.error)
+            }
+            if (stallDeleteResult.success != null) {
+                loadStallDelteList(stallDeleteResult.success)
+            }
+        })
         binding.stallCreate.setOnClickListener {
             navigateToCreateStallFragment(null)
         }
+
         getStalls()
         return root
+    }
+
+    private fun loadStallDelteList(success: GenericResponse) {
+        getStalls()
+    }
+
+    private fun showStallDeleteFailed(error: Int) {
+        Toast.makeText(context, "error no stall delete", Toast.LENGTH_SHORT).show()
     }
 
     private fun getStalls() {
@@ -91,15 +111,6 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
         super.onDestroyView()
         _binding = null
     }
-
-//    override fun onStallSelected(stall: Stall.StallList.StallData) {
-//        val gson = Gson()
-//        val stallJson = gson.toJson(stall)
-//        Log.d("stall", stallJson)
-//        val navController = NavHostFragment.findNavController(this)
-//        val action = HomeUserFragmentDirections.actionHomeUserFragmentToStallDetailUserFragment(stallJson)
-//        navController.navigate(action)
-//    }
 
     override fun onStallEditSelected(stall: Stall.StallList.StallData) {
         navigateToCreateStallFragment(stall)
@@ -122,7 +133,6 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
     override fun onStallDeleteSelected(stall: Stall.StallList.StallData) {
         stallManagementViewModel.deleteStall(this.requireContext(), stall.id!!)
         Toast.makeText(context, stall.name, Toast.LENGTH_SHORT).show()
-        getStalls()
     }
 
 }

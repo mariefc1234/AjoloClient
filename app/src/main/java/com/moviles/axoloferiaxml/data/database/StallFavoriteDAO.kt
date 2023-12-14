@@ -20,7 +20,7 @@ interface StallFavoriteDAO {
 //    @Query("DELETE FROM StallFavorite WHERE id = :id")
 //    suspend fun removeByID(id: Int)
 
-//    @Query("SELECT * FROM StallFavorite WHERE stall.id = :id")
-//    suspend fun getStallByID(id: Int): StallFavorite
+    @Query("SELECT * FROM StallFavorite WHERE id = :id")
+    suspend fun getStallByID(id: Int): StallFavorite
 
 }
