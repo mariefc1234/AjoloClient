@@ -39,7 +39,7 @@ class StallService {
 
     suspend fun updateStall(stall: StallCreate, token: String): GenericResponse? {
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(StallAPIClient::class.java).updateStall(stall, token)
+            val response = retrofit.create(StallAPIClient::class.java).updateStall(stall, stall.id!!, token)
             if (response.isSuccessful) {
                 response.body()
             } else {

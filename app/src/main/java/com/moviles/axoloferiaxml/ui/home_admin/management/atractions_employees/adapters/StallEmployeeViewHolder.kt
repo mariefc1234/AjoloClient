@@ -18,6 +18,8 @@ class StallEmployeeViewHolder(private val binding: ItemEmployeeStallBinding) : R
 
 
 
+
+
             stallEdit.setOnClickListener {
                 listener.onStallEditSelected(stall)
             }
