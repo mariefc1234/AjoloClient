@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stall_graph"
+    app:startDestination="@id/homeStallFragment">
+
+    <fragment
+        android:id="@+id/homeStallFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_stall.HomeStallFragment"
+        android:label="fragment_home_stall"
+        tools:layout="@layout/fragment_home_stall" />
+</navigation>

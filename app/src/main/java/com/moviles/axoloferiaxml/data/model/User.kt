@@ -18,7 +18,7 @@ data class User(
             @SerializedName("email") @Expose val email: String,
             @SerializedName("id_rol") @Expose val roleId: Int,
             @SerializedName("user_name") @Expose val userName: String,
-            @SerializedName("coins") @Expose val coins: Int,
+            @SerializedName("coins") @Expose val coins: Double,
             @SerializedName("image_url") @Expose val imageUrl: String,
             @SerializedName("language_configured") @Expose val languageConfigured: String
         )

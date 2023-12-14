@@ -11,6 +11,7 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.viewModelScope
 import com.moviles.axoloferiaxml.MainActivity
+import com.moviles.axoloferiaxml.MainActivityStall
 import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.core.KeystoreHelper
@@ -50,6 +51,8 @@ class LoginViewModel() : ViewModel() {
                                 val intent = Intent(context, MainActivityUser::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
+                                intent.putExtra("uuid", userInfo.uuid)
+                                intent.putExtra("coins", userInfo.coins.toString())
                                 context.startActivity(intent)
                             }
                             //admin
@@ -57,17 +60,22 @@ class LoginViewModel() : ViewModel() {
                                 val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
+                                intent.putExtra("role", userInfo.roleId.toString())
                                 context.startActivity(intent)
                             }
                             3 -> {
                                 val intent = Intent(context, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("userName", userInfo.userName)
+                                intent.putExtra("role", userInfo.roleId.toString())
                                 context.startActivity(intent)
                             }
                             //encargada de puesto
                             4 -> {
-                                Toast.makeText(context, "No", Toast.LENGTH_LONG).show()
+                                val intent = Intent(context, MainActivityStall::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra("userName", userInfo.userName)
+                                context.startActivity(intent)
                             }
                             else -> {
                                 Toast.makeText(context, "Rol desconocido", Toast.LENGTH_LONG).show()

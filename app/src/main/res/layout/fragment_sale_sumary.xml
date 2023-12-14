@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home_admin.shopping.sales_coins.sales_sumary_coins.SaleSumaryFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/sellTv"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sell AjoloCoins"
+                android:textSize="40sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardUserInfo"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/sellTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="350dp"
+                android:layout_height="100dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/userInfoTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="User information"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/usernameTv"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Usuario:"
+                        android:gravity=""
+                        app:layout_constraintTop_toBottomOf="@+id/userInfoTv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="20sp"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/username"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        app:layout_constraintStart_toEndOf="@+id/usernameTv"
+                        app:layout_constraintTop_toBottomOf="@+id/userInfoTv"
+                        android:textSize="20sp"
+                        />
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/coinstv"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="Coins:"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/usernameTv"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/coins"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toBottomOf="@+id/username"
+                        app:layout_constraintStart_toEndOf="@id/coinstv"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardSaleAmount"
+                android:layout_marginTop="15dp"
+                android:layout_width="350dp"
+                android:layout_height="140dp"
+                app:cardElevation="15dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardUserInfo"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="ExtraText">
+
+                    <TextView
+                        android:id="@+id/saleTv"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:text="Venta"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        />
+0
+                    <EditText
+                        android:gravity="center"
+                        android:id="@+id/edtxSale"
+                        android:layout_width="250dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:inputType="number"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/saleTv"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/lnlConver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@+id/edtxSale"
+                        >
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_marginStart="30dp"
+                            android:id="@+id/conversionTV"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:text="AjoloCoins:"
+                            android:textSize="20sp"
+                            app:layout_constraintTop_toBottomOf="@+id/edtxSale"
+                            app:layout_constraintStart_toStartOf="parent"
+                            />
+
+                        <TextView
+                            android:id="@+id/conver"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textStyle="bold"
+                            android:textColor="@color/purple_1"
+                            android:textSize="20sp"
+                            app:layout_constraintTop_toBottomOf="@+id/edtxSale"
+                            app:layout_constraintStart_toEndOf="@id/conversionTV"
+                            />
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPromoCode"
+                android:layout_width="350dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardSaleAmount"
+                >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/codeOfferTv"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Promo code"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:gravity="center"
+                        android:textSize="20sp"
+                        />
+
+                    <LinearLayout
+                        android:id="@id/lnlCodeOffer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/codeOfferTv">
+
+                        <EditText
+                            android:gravity="center"
+                            android:id="@+id/edtxCodeOffer"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/codeOfferTv"
+                            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                        <Button
+                            android:id="@+id/validateCode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="25dp"
+                            android:backgroundTint="@color/purple_3"
+                            android:text="Validate"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/statusCodeOffer"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="15sp"
+                        app:layout_constraintTop_toBottomOf="@+id/lnlCodeOffer"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardFinalTotal"
+                android:layout_width="350dp"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardPromoCode">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/tvTotal"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:text="Total:"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/saleAmount"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textColor="@color/green"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTotal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/saleTvTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Sale: $"
+                        app:layout_constraintTop_toBottomOf="@+id/tvTotal"
+                        app:layout_constraintEnd_toStartOf="@+id/saleAmount"
+                        />
+
+                    <TextView
+                        android:id="@+id/ajoloCoinsTv"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:textColor="@color/purple_1"
+                        app:layout_constraintTop_toBottomOf="@+id/saleTvTotal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/ajoloCoinsAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="AjoloCoins: "
+                        app:layout_constraintTop_toBottomOf="@+id/saleTvTotal"
+                        app:layout_constraintEnd_toStartOf="@+id/ajoloCoinsTv"
+                        />
+
+                    <TextView
+                        android:id="@+id/ajoloCoinsPromoTv"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text=""
+                        app:layout_constraintTop_toBottomOf="@+id/ajoloCoinsTv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/ajoloCoinsPromoAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="Promo: "
+                        app:layout_constraintTop_toBottomOf="@+id/ajoloCoinsAmount"
+                        app:layout_constraintEnd_toStartOf="@+id/ajoloCoinsPromoTv"
+                        />
+                    <View
+
+                        android:id="@+id/separator4"
+                        android:layout_width="350dp"
+                        android:layout_height="1dp"
+                        android:background="@color/gray"
+                        app:layout_constraintTop_toBottomOf="@id/ajoloCoinsPromoAmount"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/finalTotalTv"
+                        android:layout_marginEnd="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:text=""
+                        android:textColor="@color/green"
+                        app:layout_constraintTop_toBottomOf="@+id/separator4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/finalTotalAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="25sp"
+                        android:text="Final total: $"
+                        app:layout_constraintTop_toBottomOf="@+id/separator4"
+                        app:layout_constraintEnd_toStartOf="@+id/finalTotalTv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="10dp"
+                        />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+           <Button
+               android:id="@+id/buttonCompleteSale"
+               android:backgroundTint="@color/purple_1"
+               android:layout_marginTop="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Complete sale"
+               app:layout_constraintTop_toBottomOf="@+id/cardFinalTotal"
+               app:layout_constraintEnd_toEndOf="parent"
+               android:layout_marginEnd="30dp"
+               />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@+id/buttonCompleteSale"
+                />
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
