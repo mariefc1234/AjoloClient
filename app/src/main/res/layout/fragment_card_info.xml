@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".ui.more_user.shop_coins_user.cardShop.CardInfoFragment">
+
+    <ProgressBar
+        android:id="@+id/loadingSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/footerImage"
+        android:layout_width="410dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:alpha="0.4"
+        android:contentDescription="@string/footer"
+        android:src="@drawable/img_dwn_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:id="@+id/tvPayment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
+                android:text="Pago con Tarjeta"
+                />
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:id="@+id/tvNoCardWarning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPayment"
+                android:gravity="center"
+                android:text="No tienes tarjetas registradas :("
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/btnAddCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvNoCardWarning"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                android:text="Agregar Tarjeta"
+                />
+
+
+            <com.maxpilotto.creditcardview.CreditCardView
+                android:id="@+id/cardShow"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+
+                app:cardCvv="123"
+                app:cardExpiry="1234"
+                app:cardExpiryLabel="Expiry"
+                app:cardHolder="John Doe"
+                app:cardHolderLabel="Holder"
+                app:cardNumber="5201284799337668"
+                tools:layout_editor_absoluteX="39dp"
+                tools:layout_editor_absoluteY="0dp"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btnPay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/cardShow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="45dp"
+                android:visibility="gone"
+                android:text="Pagar"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

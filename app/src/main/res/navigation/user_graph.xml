@@ -31,6 +31,16 @@
         <action
             android:id="@+id/action_moreUserFragment_to_shopCoinsUserFragment"
             app:destination="@id/shopCoinsUserFragment" />
+        <action
+            android:id="@+id/action_moreUserFragment_to_supportUserFragment"
+            app:destination="@id/supportUserFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+        <action
+            android:id="@+id/action_moreUserFragment_to_languageUserFragment4"
+            app:destination="@id/languageUserFragment4" />
+        <action
+            android:id="@+id/action_moreUserFragment_to_shoppingHistoryUserFragment"
+            app:destination="@id/shoppingHistoryUserFragment" />
     </fragment>
     <fragment
         android:id="@+id/qrUserFragment"
@@ -40,7 +50,11 @@
         android:id="@+id/shopCoinsUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.ShopCoinsUserFragment"
         android:label="fragment_shop_coins_user"
-        tools:layout="@layout/fragment_shop_coins_user" />
+        tools:layout="@layout/fragment_shop_coins_user">
+        <action
+            android:id="@+id/action_shopCoinsUserFragment_to_cardUserFragment"
+            app:destination="@id/cardUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/stallDetailUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_user.StallDetailFragment"
@@ -77,5 +91,47 @@
             android:name="review"
             app:argType="string" />
     </fragment>
+
+
+    <fragment
+        android:id="@+id/cardUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.CardInfoFragment"
+        android:label="fragment_cards_user"
+        tools:layout="@layout/fragment_card_info" >
+        <action
+            android:id="@+id/action_cardUserFragment_to_registerCardFragment"
+            app:destination="@id/registerCardFragment"
+            app:enterAnim="@animator/nav_default_pop_enter_anim"
+            app:exitAnim="@animator/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_exit_anim"
+            app:popExitAnim="@animator/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_cardUserFragment_to_payCardFragment"
+            app:destination="@id/payCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerCardFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.RegisterCardFragment"
+        android:label="fragment_register_card"
+        tools:layout="@layout/fragment_register_card" />
+    <fragment
+        android:id="@+id/payCardFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.pay_card.PayCardFragment"
+        android:label="fragment_pay_card"
+        tools:layout="@layout/fragment_pay_card" />
+    <fragment
+        android:id="@+id/supportUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.support_user.SupportUserFragment"
+        android:label="fragment_support_user"
+        tools:layout="@layout/fragment_support_user" />
+    <fragment
+        android:id="@+id/languageUserFragment4"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.language_user.LanguageUserFragment"
+        android:label="LanguageUserFragment" />
+    <fragment
+        android:id="@+id/shoppingHistoryUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shopping_history_user.ShoppingHistoryUserFragment"
+        android:label="fragment_shopping_history_user"
+        tools:layout="@layout/fragment_shopping_history_user" />
 
 </navigation>

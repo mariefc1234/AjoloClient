@@ -14,6 +14,7 @@ class QrService {
 
     suspend fun generateQr(token: String): Qr? {
         return withContext(Dispatchers.IO) {
+
             val response = retrofit.create(QrAPIClient::class.java).generateQr(token)
             if (response.isSuccessful) {
                 response.body() ?: Qr("error", "Error en la solicitud", QrData("ERROR CON USUARIO"))

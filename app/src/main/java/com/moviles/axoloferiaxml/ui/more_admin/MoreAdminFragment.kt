@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 import com.moviles.axoloferiaxml.MainActivity
 import com.moviles.axoloferiaxml.R
@@ -22,7 +24,7 @@ class MoreAdminFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_more_admin, container, false)
 
         //Funcion Logout
-        val logoutButton = root.findViewById<TextView>(R.id.logoutButton)
+        val logoutButton = root.findViewById<CardView>(R.id.logoutButton)
         logoutButton.setOnClickListener {
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -32,6 +34,17 @@ class MoreAdminFragment : Fragment() {
         //Asigna Username
         val textViewUsername = root.findViewById<TextView>(R.id.textViewUserName)
         textViewUsername.text = (requireActivity() as MainActivity).getUserName()
+
+        //Funcion Support
+        val supportBtn = root.findViewById<LinearLayout>(R.id.btnSupportAdmin)
+        supportBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_moreAdminFragment_to_supportUserFragment2)
+        }
+        //Funcion Languaje
+        val languajeBtn = root.findViewById<LinearLayout>(R.id.languageAdmin)
+        languajeBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_moreAdminFragment_to_languageUserFragment)
+        }
 
         return root
     }
