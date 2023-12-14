@@ -24,6 +24,7 @@ import com.moviles.axoloferiaxml.ui.home_user.StallView
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapter
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallEmployeeAdapter
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallEmployeeAdapterListener
+import com.moviles.axoloferiaxml.ui.stall_management.create_stall.StallViewModel
 
 class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
     private val viewAdapter by lazy {
@@ -32,6 +33,7 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     private lateinit var  stallViewModel: HomeViewModel
+    private lateinit var  stallManagementViewModel: StallViewModel
 
     private val stallList = mutableListOf<Stall.StallList.StallData>()
 
@@ -118,7 +120,9 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
     }
 
     override fun onStallDeleteSelected(stall: Stall.StallList.StallData) {
+        stallManagementViewModel.deleteStall(this.requireContext(), stall.id!!)
         Toast.makeText(context, stall.name, Toast.LENGTH_SHORT).show()
+        getStalls()
     }
 
 }

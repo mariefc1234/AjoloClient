@@ -1,10 +1,8 @@
-package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder.adapters
+package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import com.moviles.axoloferiaxml.data.model.Employee
-import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.ItemStallholderBinding
-import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapterListener
 import com.squareup.picasso.Picasso
 
 class StallHolderViewHolder (private val binding: ItemStallholderBinding) : RecyclerView.ViewHolder(binding.root) {

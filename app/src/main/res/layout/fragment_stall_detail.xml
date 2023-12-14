@@ -48,7 +48,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginHorizontal="10dp"
-                    android:src="@drawable/star"/>
+                    android:src="@drawable/star_fill"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/stall_description"
@@ -62,6 +62,11 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:text="Add review" />
+            <Button
+                android:id="@+id/stall_see_review"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="reviews" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

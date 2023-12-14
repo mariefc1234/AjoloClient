@@ -81,7 +81,7 @@
 
     <fragment
         android:id="@+id/stallHolderFragment"
-        android:name="com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder.adapters.StallHolderFragment"
+        android:name="com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters.StallHolderFragment"
         tools:layout="@layout/fragment_stallholder">
         <argument
             android:name="stall"

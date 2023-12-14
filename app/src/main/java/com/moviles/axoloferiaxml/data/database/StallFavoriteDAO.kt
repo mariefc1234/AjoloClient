@@ -1,6 +1,7 @@
 package com.moviles.axoloferiaxml.data.database
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -11,11 +12,15 @@ interface StallFavoriteDAO {
     suspend fun getAllStalls(): List<StallFavorite>
 
     @Insert
-    suspend fun insert(stall: List<StallFavorite>)
+    suspend fun insert(stall: StallFavorite)
 
-    @Query("SELECT * FROM StallFavorite WHERE id = :id")
-    suspend fun getStallByID(id: Int): StallFavorite
+    @Delete
+    suspend fun remove(stall: StallFavorite)
+//
+//    @Query("DELETE FROM StallFavorite WHERE id = :id")
+//    suspend fun removeByID(id: Int)
 
-    @Query("SELECT * FROM StallFavorite WHERE isFavorite = 1")
-    suspend fun getFavoriteStalls(): MutableList<StallFavorite>
+//    @Query("SELECT * FROM StallFavorite WHERE stall.id = :id")
+//    suspend fun getStallByID(id: Int): StallFavorite
+
 }

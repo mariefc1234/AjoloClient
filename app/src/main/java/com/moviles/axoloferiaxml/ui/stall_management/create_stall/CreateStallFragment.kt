@@ -20,6 +20,7 @@ import com.moviles.axoloferiaxml.data.model.StallCreate
 import com.moviles.axoloferiaxml.data.model.User
 import com.moviles.axoloferiaxml.databinding.FragmentCreateStallBinding
 import com.moviles.axoloferiaxml.ui.home_user.StallDetailFragmentArgs
+import com.moviles.axoloferiaxml.ui.reviews.AddReviewFragmentArgs
 
 class CreateStallFragment: Fragment() {
 
@@ -54,8 +55,13 @@ class CreateStallFragment: Fragment() {
         binding.stallStallholder.setOnClickListener {
             navigateToStallHolder()
         }
+
         binding.stallSave.setOnClickListener {
             createStall()
+        }
+
+        binding.stallUpdate.setOnClickListener {
+            updateStall()
         }
 
 
@@ -66,6 +72,11 @@ class CreateStallFragment: Fragment() {
         Log.d("stalljson", stallJson!!)
         if(!(stallJson.isNullOrEmpty() || stallJson.isBlank())){
             fillStallToUpdate(stallJson)
+            binding.stallUpdate.visibility = View.VISIBLE
+            binding.stallSave.visibility = View.GONE
+        } else {
+            binding.stallUpdate.visibility = View.GONE
+            binding.stallSave.visibility = View.VISIBLE
         }
         if(!(stallHolderJson.isNullOrEmpty() || stallHolderJson.isBlank())){
             fillStallHolderField(stallHolderJson)
@@ -133,7 +144,6 @@ class CreateStallFragment: Fragment() {
             val cost: String = stallCost.text.toString()
             val uuidEmployer: String = getIdInPreferences()
 
-
             val minimunHeightInt: Int = if(minimunHeight.isBlank()) 0 else minimunHeight.toInt()
             val costInt = if(cost.isBlank()) 0 else cost.toInt()
             val stall = StallCreate(
@@ -153,6 +163,11 @@ class CreateStallFragment: Fragment() {
 
         val stall = getStallDataFromFields()
         stallViewModel.createStall(stall, requireActivity())
+    }
+
+    private fun updateStall() {
+        val stall = getStallDataFromFields()
+        stallViewModel.updateStall(stall, requireActivity())
     }
 
     private fun getIdInPreferences(): String {

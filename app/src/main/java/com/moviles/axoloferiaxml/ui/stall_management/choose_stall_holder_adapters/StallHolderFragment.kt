@@ -1,4 +1,4 @@
-package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder.adapters
+package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters
 
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.moviles.axoloferiaxml.data.model.Employee
-import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentStallholderBinding
-import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapter
-import com.moviles.axoloferiaxml.ui.stall_management.create_stall.CreateStallFragmentArgs
+import com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters.adapters.StallHolderAdapter
+import com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters.adapters.StallHolderAdapterListener
 import com.moviles.axoloferiaxml.ui.stall_management.create_stall.StallViewModel
 
 class StallHolderFragment : Fragment(), StallHolderAdapterListener {
@@ -88,7 +87,10 @@ class StallHolderFragment : Fragment(), StallHolderAdapterListener {
         Log.d("stallHolder", stallHolderJson)
         val navController = NavHostFragment.findNavController(this)
         val stallJson: String? = StallHolderFragmentArgs.fromBundle(requireArguments()).stall
-        val action = StallHolderFragmentDirections.actionStallHolderFragmentToCreateStallFragment(stallJson, stallHolderJson)
+        val action = StallHolderFragmentDirections.actionStallHolderFragmentToCreateStallFragment(
+            stallJson,
+            stallHolderJson
+        )
         navController.navigate(action)
     }
 

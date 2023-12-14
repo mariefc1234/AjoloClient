@@ -29,13 +29,29 @@ class StallService {
     suspend fun createStall(stall: StallCreate, token: String): GenericResponse? {
         return withContext(Dispatchers.IO) {
             val response = retrofit.create(StallAPIClient::class.java).createStall(stall, token)
-            Log.d("response", response.raw().toString())
-            Log.d("response", response.code().toString())
-            Log.d("response", response.isSuccessful.toString())
-            Log.d("response", response.errorBody().toString())
-            Log.d("response", response.headers().toString())
-            Log.d("response", response.message())
-            Log.d("response", response.body().toString())
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                null
+            }
+        }
+    }
+
+    suspend fun updateStall(stall: StallCreate, token: String): GenericResponse? {
+        return withContext(Dispatchers.IO) {
+            val response = retrofit.create(StallAPIClient::class.java).updateStall(stall, token)
+            if (response.isSuccessful) {
+                response.body()
+            } else {
+                null
+            }
+        }
+    }
+
+    suspend fun deleteStall(token: String, id: Int): GenericResponse? {
+
+        return withContext(Dispatchers.IO) {
+            val response = retrofit.create(StallAPIClient::class.java).deleteStall(token, id)
             if (response.isSuccessful) {
                 response.body()
             } else {

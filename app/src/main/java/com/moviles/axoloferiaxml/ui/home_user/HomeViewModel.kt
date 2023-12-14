@@ -64,18 +64,20 @@ class HomeViewModel : ViewModel(){
 
         fragment.lifecycleScope.launch {
 
-            val stall = StallFavorite(
-                id = stall.id ?: 0,
+            val stallInsert = StallFavorite(
+                id = stall.id,
                 id_stall_type = stall.id_stall_type,
                 name = stall.name,
                 description = stall.description,
-                imageUrl = stall.image_url ?: "",
+                image_url = stall.image_url,
                 cost = stall.cost,
                 minimun_height_cm = stall.minimun_height_cm,
                 uuidEmployeer = stall.uuidEmployeer,
-                isFavorite = true
+                enabled = stall.enabled,
+                createdAt = stall.createdAt,
+                updatedAt = stall.updatedAt,
             )
-            room.stallFavoriteDAO().insert(listOf(stall))
+            room.stallFavoriteDAO().insert(stallInsert)
         }
     }
 
@@ -86,7 +88,7 @@ class HomeViewModel : ViewModel(){
 
         fragment.lifecycleScope.launch {
 
-            val stalls = room.stallFavoriteDAO().getFavoriteStalls()
+            val stalls = room.stallFavoriteDAO().getAllStalls() as MutableList
             Log.d("Songs", stalls.toString())
             _stallFavoriteResult.value = stalls
         }

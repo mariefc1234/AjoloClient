@@ -1,4 +1,4 @@
-package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder.adapters
+package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters
 
 import com.moviles.axoloferiaxml.data.model.Employee
 

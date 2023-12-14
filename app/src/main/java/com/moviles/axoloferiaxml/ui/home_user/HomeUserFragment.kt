@@ -10,14 +10,21 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.google.gson.Gson
+import com.moviles.axoloferiaxml.R
+import com.moviles.axoloferiaxml.data.database.AxoloferiaDB
+import com.moviles.axoloferiaxml.data.database.StallFavorite
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentHomeUserBinding
+import com.moviles.axoloferiaxml.databinding.ItemStallBinding
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapter
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapterListener
+import kotlinx.coroutines.launch
 
 class HomeUserFragment : Fragment(), StallAdapterListener {
 
@@ -60,6 +67,14 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
 
         })
         getStalls()
+        with(binding) {
+            buttonAllStalls.setOnClickListener {
+                getStalls()
+            }
+            buttonAllStalls.setOnClickListener {
+                getFavoriteStalls()
+            }
+        }
         return root
     }
 
@@ -90,4 +105,73 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
         val action = HomeUserFragmentDirections.actionHomeUserFragmentToStallDetailUserFragment(stallJson)
         navController.navigate(action)
     }
+
+    override fun setFavouriteStall(stall: Stall.StallList.StallData, itemBinding: ItemStallBinding) {
+        val stallFavorite = getFavoriteStallById(stall.id!!)
+        if (stallFavorite == null) {
+            itemBinding.favoriteIcon.setImageResource(R.drawable.favorite_fill)
+//            setFavoriteStall(stall)
+        } else {
+            itemBinding.favoriteIcon.setImageResource(R.drawable.favorite)
+//            removeFavoriteStall(stallFavorite)
+        }
+    }
+
+    private fun setFavoriteStall(stall: Stall.StallList.StallData) {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+        lifecycleScope.launch {
+            val song = StallFavorite(
+                id = stall.id,
+                id_stall_type = stall.id_stall_type,
+                name = stall.name,
+                description = stall.description,
+                image_url = stall.image_url,
+                cost = stall.cost,
+                minimun_height_cm = stall.minimun_height_cm,
+                uuidEmployeer = stall.uuidEmployeer,
+                enabled = stall.enabled,
+                createdAt = stall.createdAt,
+                updatedAt = stall.updatedAt,
+            )
+            room.stallFavoriteDAO().insert(song)
+        }
+    }
+
+    private fun getFavoriteStalls() {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+//        lifecycleScope.launch {
+//            val otherSongs = room.stallFavoriteDAO().getFavoriteStalls()
+//            Log.d("Songs", otherSongs.toString())
+//        }
+    }
+
+    private fun getFavoriteStallById(id: Int): StallFavorite? {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+        lateinit var otherSongs: StallFavorite
+//        lifecycleScope.launch {
+//            otherSongs = room.stallFavoriteDAO().getStallByID(id)
+//            Log.d("Songs", otherSongs.toString())
+//
+//        }
+        return otherSongs
+    }
+
+    private fun removeFavoriteStall(stall: StallFavorite) {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+        lifecycleScope.launch {
+            room.stallFavoriteDAO().remove(stall)
+        }
+    }
+
 }

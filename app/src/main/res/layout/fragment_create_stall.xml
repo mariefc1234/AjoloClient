@@ -138,6 +138,12 @@
         android:layout_height="50dp"
         android:text="Save" />
     <Button
+        android:id="@+id/stall_update"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:text="Save" />
+    <Button
         android:id="@+id/stall_cancel"
         android:layout_width="300dp"
         android:layout_height="50dp"

@@ -1,11 +1,10 @@
-package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder.adapters
+package com.moviles.axoloferiaxml.ui.stall_management.choose_stall_holder_adapters.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.moviles.axoloferiaxml.data.model.Employee
 import com.moviles.axoloferiaxml.databinding.ItemStallholderBinding
-import com.moviles.axoloferiaxml.ui.home_user.adapters.StallViewHolder
 
 interface StallHolderAdapterListener{
     fun onStallHolderSelected(stallHolder: Employee.EmployeeList.EmployeeInfo)

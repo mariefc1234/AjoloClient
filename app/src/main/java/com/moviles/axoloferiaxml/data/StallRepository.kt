@@ -30,4 +30,22 @@ class StallRepository {
         }
         return response
     }
+
+    suspend fun updateStall(stall: StallCreate, keystoreHelper: KeystoreHelper) : GenericResponse? {
+        val token = keystoreHelper.getToken()
+        val response = api.updateStall(stall, token ?: "")
+        if(response != null){
+            GenericResponseProvider.response = response
+        }
+        return response
+    }
+
+    suspend fun deleteStalls(keystoreHelper: KeystoreHelper, id: Int): GenericResponse? {
+        val token = keystoreHelper.getToken()
+        val response = api.deleteStall(token ?: "", id)
+        if (response != null) {
+            GenericResponseProvider.response = response
+        }
+        return response
+    }
 }
