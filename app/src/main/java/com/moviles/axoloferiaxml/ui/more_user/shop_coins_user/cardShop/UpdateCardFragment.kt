@@ -8,48 +8,67 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.maxpilotto.creditcardview.models.CardInput
-import com.moviles.axoloferiaxml.core.KeystoreHelper
-import com.moviles.axoloferiaxml.data.model.user_employee.EmployeeAdd
-import com.moviles.axoloferiaxml.data.network.sales.RetrofitClientSales
-import com.moviles.axoloferiaxml.data.network.user_employee.RetrofitClient
-import androidx.navigation.fragment.findNavController
 import com.moviles.axoloferiaxml.R
-import com.moviles.axoloferiaxml.databinding.FragmentRegisterCardBinding
+import com.moviles.axoloferiaxml.core.KeystoreHelper
+import com.moviles.axoloferiaxml.databinding.FragmentUpdateCardBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 
-class RegisterCardFragment : Fragment() {
+class updateCardFragment : Fragment() {
 
-    private var _binding: FragmentRegisterCardBinding? = null
+    private var _binding: FragmentUpdateCardBinding? = null
     private val binding get() = _binding!!
+
+    private val cardViewModel by viewModels<CardViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentRegisterCardBinding.inflate(inflater, container, false)
+        _binding = FragmentUpdateCardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val cardShow =  binding.cardShow
-        cardShow.apply {
-            pairInput(CardInput.HOLDER, binding.holderEditText)
-            pairInput(CardInput.EXPIRY, binding.expirationDateEditText)
-            pairInput(CardInput.NUMBER, binding.cardNumberEditText)
-        }
+        binding.cardShow.visibility = View.GONE
+        binding.loadingSpinner.visibility = View.VISIBLE
 
-        binding.addCardButton.setOnClickListener{
-            this.registerCard(_binding!!)
-        }
+        val cardShow = binding.cardShow
+
+        cardViewModel.cardLiveData.observe(viewLifecycleOwner, Observer { card ->
+            binding.loadingSpinner.visibility = View.GONE
+            binding.cardShow.visibility = View.VISIBLE
+
+            if (card != null) {
+
+                cardShow.apply {
+                    pairInput(CardInput.HOLDER, binding.holderEditText)
+                    pairInput(CardInput.EXPIRY, binding.expirationDateEditText)
+                    pairInput(CardInput.NUMBER, binding.cardNumberEditText)
+                }
+
+                binding.holderEditText.setText(card.data.card.cardHolder)
+                binding.cardNumberEditText.setText(card.data.card.cardNumber)
+                binding.expirationDateEditText.setText("${card.data.card.cardExpirationMonth}${card.data.card.cardExpirationYear}")
+
+                binding.addCardButton.setOnClickListener{
+                    this.registerCard(_binding!!)
+                }
+            }
+        })
+
+        cardViewModel.getCard(requireContext())
 
         return root
     }
 
-    private fun registerCard(_binding: FragmentRegisterCardBinding) {
+
+    private fun registerCard(_binding: FragmentUpdateCardBinding) {
         val expirationDate = _binding.expirationDateEditText.text.toString()
         val (month, year) = getMonthAndYear(expirationDate)
 
@@ -68,8 +87,8 @@ class RegisterCardFragment : Fragment() {
 
                     withContext(Dispatchers.Main) {
                         if (call.isSuccessful) {
-                            Toast.makeText(requireContext(), "Tarjeta Registrada!", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_registerCardFragment_to_cardUserFragment)
+                            Toast.makeText(requireContext(), "Tarjeta Actualizada!", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_updateCardFragment_to_cardUserFragment)
 
                         } else {
                             Toast.makeText(requireContext(), "Ingresa una tarjeta válida", Toast.LENGTH_SHORT).show()
@@ -96,4 +115,5 @@ class RegisterCardFragment : Fragment() {
             return Pair(null, null)
         }
     }
+
 }

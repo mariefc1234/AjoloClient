@@ -64,17 +64,28 @@
         <action
             android:id="@+id/action_cardUserFragment_to_payCardFragment"
             app:destination="@id/payCardFragment" />
+        <action
+            android:id="@+id/action_cardUserFragment_to_updateCardFragment"
+            app:destination="@id/updateCardFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerCardFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.RegisterCardFragment"
         android:label="fragment_register_card"
-        tools:layout="@layout/fragment_register_card" />
+        tools:layout="@layout/fragment_register_card" >
+        <action
+            android:id="@+id/action_registerCardFragment_to_cardUserFragment"
+            app:destination="@id/cardUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/payCardFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.pay_card.PayCardFragment"
         android:label="fragment_pay_card"
-        tools:layout="@layout/fragment_pay_card" />
+        tools:layout="@layout/fragment_pay_card" >
+        <action
+            android:id="@+id/action_payCardFragment_to_shoppingHistoryUserFragment"
+            app:destination="@id/shoppingHistoryUserFragment" />
+    </fragment>
     <fragment
         android:id="@+id/supportUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.support_user.SupportUserFragment"
@@ -89,5 +100,14 @@
         android:name="com.moviles.axoloferiaxml.ui.more_user.shopping_history_user.ShoppingHistoryUserFragment"
         android:label="fragment_shopping_history_user"
         tools:layout="@layout/fragment_shopping_history_user" />
+    <fragment
+        android:id="@+id/updateCardFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.cardShop.updateCardFragment"
+        android:label="fragment_update_card"
+        tools:layout="@layout/fragment_update_card" >
+        <action
+            android:id="@+id/action_updateCardFragment_to_cardUserFragment"
+            app:destination="@id/cardUserFragment" />
+    </fragment>
 
 </navigation>
