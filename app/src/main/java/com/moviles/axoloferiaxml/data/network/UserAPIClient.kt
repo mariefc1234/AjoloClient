@@ -1,6 +1,9 @@
 package com.moviles.axoloferiaxml.data.network
 
+
 import com.moviles.axoloferiaxml.data.model.Employee
+import com.moviles.axoloferiaxml.data.model.RegisterAuth
+import com.moviles.axoloferiaxml.data.model.RegisterUser
 import com.moviles.axoloferiaxml.data.model.User
 import com.moviles.axoloferiaxml.data.model.UserAuth
 import okhttp3.MultipartBody
@@ -29,5 +32,10 @@ interface UserAPIClient {
         @Header("authtoken") token: String,
         @Body Key: MultipartBody.Part
     ): Response<Int>
+
+    @POST("auth/registerClient")
+    suspend fun registerClient(
+        @Body request: RegisterAuth
+    ): Response<RegisterUser>
 
 }

@@ -1,6 +1,7 @@
 package com.moviles.axoloferiaxml.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.moviles.axoloferiaxml.data.model.User
 import com.moviles.axoloferiaxml.databinding.ActivityLoginBinding
+import com.moviles.axoloferiaxml.ui.register.RegisterActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -33,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.passwordEditText
         val login = binding.loginbtn
         val loading = binding.loading
+        val register = binding.registerTextView
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
@@ -98,6 +101,13 @@ class LoginActivity : AppCompatActivity() {
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString(), this@LoginActivity)
+            }
+
+            register.setOnClickListener{
+                loading.visibility = View.VISIBLE
+                val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }
