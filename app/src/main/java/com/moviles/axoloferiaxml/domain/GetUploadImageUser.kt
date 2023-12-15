@@ -6,6 +6,6 @@ import okhttp3.MultipartBody
 
 class GetUploadImageUser {
     private val repository = UserRepository()
-    suspend operator fun invoke(keystoreHelper: KeystoreHelper, image: MultipartBody.Part): Boolean = repository.uploadImageUser(keystoreHelper, image)
+    suspend operator fun invoke(keystoreHelper: KeystoreHelper, image: MultipartBody.Part, uuid: String): Boolean = repository.uploadImageUser(keystoreHelper, image, uuid)
 
 }

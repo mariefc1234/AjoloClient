@@ -20,6 +20,7 @@ class MainActivityUser : AppCompatActivity() {
     private var uuid = ""
     private var userName = ""
     private var coins = ""
+    private var imgUrl = ""
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainUserBinding
 
@@ -30,6 +31,7 @@ class MainActivityUser : AppCompatActivity() {
 
         uuid = intent.getStringExtra("uuid").toString()
         coins = intent.getStringExtra("coins")!!.toDouble().toInt().toString()
+        imgUrl = intent.getStringExtra("imgUrl").toString()
 
         if (intent.hasExtra("userName")) {
             userName = intent.getStringExtra("userName").toString()
@@ -66,6 +68,9 @@ class MainActivityUser : AppCompatActivity() {
     }
     fun getUserUuid(): String {
         return uuid
+    }
+    fun getUserImgUrl(): String {
+        return imgUrl
     }
     fun ocultarBarraNavegacion() {
         binding.navViewUser.visibility = View.GONE

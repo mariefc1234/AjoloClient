@@ -4,10 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    app:cardCornerRadius="10dp"
-    android:layout_gravity="right"
-    app:cardElevation="10dp">
+    android:layout_marginEnd="25dp"
+    android:layout_marginStart="25dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="15dp"
+    android:layout_gravity="center_horizontal"
+    app:cardElevation="15dp"
+    android:padding="15dp">
 
 
     <LinearLayout
@@ -25,18 +28,20 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/tvStatus"
+                android:id="@+id/tvCouponName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="20sp"
                 android:gravity="center"
-                android:hint="Status:"/>
+                android:hint="Coupon:"/>
 
             <TextView
-                android:id="@+id/tvStatusValue"
+                android:id="@+id/tvCouponNameValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:hint="1"/>
         </LinearLayout>
@@ -54,14 +59,16 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:gravity="center"
+            android:textSize="20sp"
             android:hint="Type:"/>
 
         <TextView
-            android:id="@+id/tvTypeValue"
+            android:id="@+id/tvTypeCouponValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:gravity="center"
+            android:textSize="20sp"
             android:hint="tipo"/>
 
     </LinearLayout>
@@ -79,14 +86,16 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:gravity="center"
+            android:textSize="20sp"
             android:hint="Min amount:"/>
 
         <TextView
-            android:id="@+id/tvMinAmountValue"
+            android:id="@+id/tvMinAmountCouponValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:gravity="center"
+            android:textSize="20sp"
             android:hint="777"/>
 
     </LinearLayout>
@@ -104,12 +113,14 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:gravity="center"
+            android:textSize="20sp"
             android:hint="Value:"/>
 
         <TextView
             android:id="@+id/tvValueCupponValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:padding="5dp"
             android:gravity="center"
             android:hint="69"/>
@@ -125,20 +136,10 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnEditar"
+            android:id="@+id/btnDeleteCoupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/purple_3"
-            android:text="Editar" />
-
-        <Button
-            android:id="@+id/btnBorrar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
             android:text="Borrar"
             android:backgroundTint="@color/red_2"/>
 

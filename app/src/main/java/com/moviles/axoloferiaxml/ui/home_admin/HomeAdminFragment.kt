@@ -27,35 +27,25 @@ class HomeAdminFragment : Fragment() {
 
             val textTitleAdmin = root.findViewById<CardView>(R.id.textTitleAdmin)
             val adminEmployees = root.findViewById<CardView>(R.id.adminEmployees)
-            val adminEmployeesAtractions = root.findViewById<CardView>(R.id.adminEmployeesAtractions)
 
             textTitleAdmin.isVisible = false
             adminEmployees.isVisible = false
-            adminEmployeesAtractions.isVisible = false
         }
 
         //Admin Panel
         val employeeAdminRegisterButton = root.findViewById<ImageButton>(R.id.employeeAdminRegisterButton)
-        val employeeAtractionsAdmin = root.findViewById<ImageButton>(R.id.employeeAtractionsAdmin)
 
         employeeAdminRegisterButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeAdminFragment_to_employeeAdmFragment)
         }
-        employeeAtractionsAdmin.setOnClickListener {
-            findNavController().navigate(R.id.action_homeAdminFragment_to_atranstionsAdminFragment)
-        }
 
         //Management
         val atractionEmployeeButton = root.findViewById<ImageButton>(R.id.atracctionEmployeeButton)
-        val sellerEmployeeButton = root.findViewById<ImageButton>(R.id.sellerEmployeeButton)
         val offersEmployeeButton = root.findViewById<ImageButton>(R.id.offersEmployeeButton)
         val eventsEmployeeButton = root.findViewById<ImageButton>(R.id.eventsEmployeeButton)
 
         atractionEmployeeButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeAdminFragment_to_atractionsEmployeesFragment)
-        }
-        sellerEmployeeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeAdminFragment_to_sellersEmployeesFragment)
         }
         offersEmployeeButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeAdminFragment_to_offersEmployeesFragment)

@@ -172,7 +172,7 @@
             android:layout_height="80dp"
             app:layout_constraintTop_toBottomOf="@id/textTitleManagement"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/managementSellers"
+            app:layout_constraintEnd_toStartOf="@id/managementOffers"
             app:cardCornerRadius="25dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -211,52 +211,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_marginTop="5dp"
-            android:id="@+id/managementSellers"
-            app:cardElevation="10dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:layout_constraintTop_toBottomOf="@id/textTitleManagement"
-            app:layout_constraintStart_toEndOf="@id/managementAtractions"
-            app:layout_constraintEnd_toEndOf="@id/managementOffers"
-            app:cardCornerRadius="25dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageButton
-                        android:id="@+id/sellerEmployeeButton"
-                        android:layout_width="60dp"
-                        android:layout_height="50dp"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/seller"
-                        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sellers"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_marginTop="5dp"
@@ -265,7 +219,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:layout_constraintTop_toBottomOf="@id/textTitleManagement"
-            app:layout_constraintStart_toEndOf="@id/managementSellers"
+            app:layout_constraintStart_toEndOf="@id/managementAtractions"
             app:layout_constraintEnd_toStartOf="@id/managementEvents"
             app:cardCornerRadius="25dp">
 
@@ -394,7 +348,6 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginStart="100dp"
             android:layout_marginTop="5dp"
             android:id="@+id/adminEmployees"
             app:cardElevation="10dp"
@@ -402,7 +355,7 @@
             android:layout_height="80dp"
             app:layout_constraintTop_toBottomOf="@id/textTitleAdmin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/adminEmployeesAtractions"
+            app:layout_constraintEnd_toEndOf="parent"
             app:cardCornerRadius="25dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -441,53 +394,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_marginEnd="100dp"
-            android:layout_marginTop="5dp"
-            android:id="@+id/adminEmployeesAtractions"
-            app:cardElevation="10dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:layout_constraintTop_toBottomOf="@id/textTitleAdmin"
-            app:layout_constraintStart_toEndOf="@id/adminEmployees"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:cardCornerRadius="25dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageButton
-                        android:id="@+id/employeeAtractionsAdmin"
-                        android:layout_width="60dp"
-                        android:layout_height="50dp"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/atractions"
-                        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Atractions"
-                        android:textSize="10sp" />
-                </LinearLayout>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/headline"
