@@ -78,7 +78,7 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
             }
         })
         binding.stallCreate.setOnClickListener {
-            navigateToCreateStallFragment(null)
+            navigateToCreateStallFragment(null, true)
         }
 
         getStalls()
@@ -113,10 +113,10 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
     }
 
     override fun onStallEditSelected(stall: Stall.StallList.StallData) {
-        navigateToCreateStallFragment(stall)
+        navigateToCreateStallFragment(stall, false)
     }
 
-    private fun navigateToCreateStallFragment(stall: Stall.StallList.StallData?) {
+    private fun navigateToCreateStallFragment(stall: Stall.StallList.StallData?, isCreate: Boolean) {
         val gson = Gson()
         var stallJson = ""
         if (stall != null) {
@@ -126,7 +126,7 @@ class AtractionsEmployeesFragment : Fragment(), StallEmployeeAdapterListener {
         Log.d("stall", stallJson)
 
         val navController = NavHostFragment.findNavController(this)
-        val action = AtractionsEmployeesFragmentDirections.actionAtractionsEmployeesFragmentToCreateStallFragment(stallJson, null)
+        val action = AtractionsEmployeesFragmentDirections.actionAtractionsEmployeesFragmentToStallHolderFragment(stallJson)
         navController.navigate(action)
     }
 

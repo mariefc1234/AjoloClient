@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -74,6 +76,9 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
             buttonFavoriteStalls.setOnClickListener {
                 getFavoriteStalls()
             }
+            nofavoriteIcon.setOnClickListener {
+                clearFavorites()
+            }
         }
         return root
     }
@@ -135,6 +140,7 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
                 enabled = stall.enabled,
                 createdAt = stall.createdAt,
                 updatedAt = stall.updatedAt,
+                points = stall.points
             )
             room.stallFavoriteDAO().insert(song)
         }
@@ -154,6 +160,10 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
     }
 
     private fun fillFavoriteStalls(stalls: List<StallFavorite>) {
+        binding.recyclerView.forEach {
+            it.findViewById<ImageButton>(R.id.favorite_icon)
+                .setBackgroundResource(R.drawable.favorite_fill)
+        }
         stallList.clear()
         stalls.forEach { stall ->
             stallList.add( Stall.StallList.StallData(
@@ -168,6 +178,7 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
                 enabled = stall.enabled,
                 createdAt = stall.createdAt,
                 updatedAt = stall.updatedAt,
+                points = stall.points
             ))
         }
         viewAdapter.notifyDataSetChanged()
@@ -193,6 +204,16 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
 
         lifecycleScope.launch {
             room.stallFavoriteDAO().remove(stall)
+        }
+    }
+
+    private fun clearFavorites() {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+        lifecycleScope.launch {
+            room.stallFavoriteDAO().removeAll()
         }
     }
 
