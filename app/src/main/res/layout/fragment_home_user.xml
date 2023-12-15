@@ -22,16 +22,26 @@
 
             <Button
                 android:id="@+id/button_all_stalls"
-                android:layout_width="180dp"
+                android:layout_width="170dp"
                 android:layout_height="35dp"
                 android:background="@drawable/shape_semi_circle_button"
                 android:text="@string/button_all_stall"/>
             <Button
                 android:id="@+id/button_favorite_stalls"
-                android:layout_width="180dp"
+                android:layout_width="170dp"
                 android:layout_height="35dp"
                 android:background="@drawable/shape_semi_circle_button_invert"
                 android:text="@string/button_top_stall"/>
+
+            <ImageButton
+                android:id="@+id/nofavorite_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/nofavorite"
+                android:layout_marginLeft="10dp"
+                android:background="#00FFFFFF"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
         </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"

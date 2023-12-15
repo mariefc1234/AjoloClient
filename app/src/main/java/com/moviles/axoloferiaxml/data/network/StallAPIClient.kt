@@ -4,6 +4,7 @@ import com.moviles.axoloferiaxml.data.model.GenericResponse
 import com.moviles.axoloferiaxml.data.model.Review
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.data.model.StallCreate
+import com.moviles.axoloferiaxml.data.model.StallUpdate
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -25,7 +26,7 @@ interface StallAPIClient {
 
     @PUT("stalls/update/{stallId}")
     suspend fun updateStall(
-        @Body stall: StallCreate,
+        @Body stall: StallUpdate,
         @Path("stallId") stallId: Int,
         @Header("authtoken") token: String
     ): Response<GenericResponse>

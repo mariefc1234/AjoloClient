@@ -36,16 +36,16 @@ class UserRepository {
         return response
     }
 
-    suspend fun uploadImageUser(keystoreHelper: KeystoreHelper, image: MultipartBody.Part): Boolean{
+    suspend fun uploadImageUser(keystoreHelper: KeystoreHelper, image: MultipartBody.Part, uuid: String): Boolean{
         val token = keystoreHelper.getToken()
         if (token.isNullOrEmpty() || token.isNullOrBlank()){
             Log.d("error", "el token sigue siendo nulo $token")
         }
-        val response = api.uploadImageUser(token ?: "", image = image)
+        val response = api.uploadImageUser(token ?: "", image = image, uuid)
         if (response != 200) {
-            return  true
+            return  false
         }
-        return false
+        return true
 
     }
 

@@ -51,16 +51,23 @@ class UserService {
         }
     }
 
-
-    suspend fun uploadImageUser(token: String, image: MultipartBody.Part): Int? {
+    
+    suspend fun uploadImageUser(token: String, image: MultipartBody.Part, uuid: String): Int? {
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(UserAPIClient::class.java).uploadImageUser(token, image)
-            if (response.isSuccessful) {
-                response.code()
-            } else {
-                response.code()
+            try {
+                val response = retrofit.create(UserAPIClient::class.java).uploadImageUser(token, image, uuid)
+                Log.d("RESPUESTA_DEL_SERVIDOR", response.body().toString())
+                if (response.isSuccessful) {
+                    Log.d("CODIGO_SIisSucce", response.code().toString())
+                    return@withContext response.code()
+                } else {
+                    Log.d("CODIGO_SINOisSuc", response.code().toString())
+                    return@withContext null
+                }
+            } catch (e: Exception) {
+                Log.e("ERROR_DE_RED", "Error en la solicitud de red", e)
+                return@withContext null
             }
         }
     }
-
 }

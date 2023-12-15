@@ -9,9 +9,6 @@
         android:id="@+id/homeUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_user.HomeUserFragment"
         tools:layout="@layout/fragment_home_user" >
-        <argument
-            android:name="stall"
-            app:argType="string" />
         <action
             android:id="@+id/action_homeUserFragment_to_stallDetailUserFragment"
             app:destination="@id/stallDetailUserFragment"/>
@@ -76,8 +73,8 @@
         android:label="fragment_add_review"
         tools:layout="@layout/fragment_add_review" >
         <action
-            android:id="@+id/action_addReviewUserFragment_to_reviewsUserFragment"
-            app:destination="@id/reviewsUserFragment" />
+            android:id="@+id/action_addReviewUserFragment_to_homeUserFragment"
+            app:destination="@id/homeUserFragment" />
         <argument
             android:name="review"
             app:argType="string" />
