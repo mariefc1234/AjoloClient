@@ -9,5 +9,35 @@
         android:id="@+id/homeStallFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_stall.HomeStallFragment"
         android:label="fragment_home_stall"
-        tools:layout="@layout/fragment_home_stall" />
+        tools:layout="@layout/fragment_home_stall" >
+        <action
+            android:id="@+id/action_homeStallFragment_to_codeScannerSale"
+            app:destination="@id/codeScannerSale" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeScannerSale"
+        android:name="com.moviles.axoloferiaxml.ui.home_stall.CodeScannerSale"
+        android:label="fragment_code_scanner_sale"
+        tools:layout="@layout/fragment_code_scanner_sale" >
+        <action
+            android:id="@+id/action_codeScannerSale_to_makeChargeFragment"
+            app:destination="@id/makeChargeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/makeChargeFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_stall.MakeChargeFragment"
+        android:label="fragment_make_charge"
+        tools:layout="@layout/fragment_make_charge" />
+
+    <fragment
+        android:id="@+id/moreAdminFragment"
+        android:name="com.moviles.axoloferiaxml.ui.more_admin.MoreAdminFragment"
+        tools:layout="@layout/fragment_more_admin" >
+        <action
+            android:id="@+id/action_moreAdminFragment_to_languageUserFragment"
+            app:destination="@id/languageUserFragment" />
+        <action
+            android:id="@+id/action_moreAdminFragment_to_supportUserFragment2"
+            app:destination="@id/supportUserFragment2" />
+    </fragment>
 </navigation>

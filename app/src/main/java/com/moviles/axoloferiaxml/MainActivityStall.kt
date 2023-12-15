@@ -2,6 +2,7 @@ package com.moviles.axoloferiaxml
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
@@ -36,5 +37,12 @@ class MainActivityStall: AppCompatActivity() {
     }
     fun getUserName(): String {
         return userName
+    }
+
+    fun ocultarBarraNavegacion() {
+        binding.navViewStall.visibility = View.GONE
+    }
+    fun mostrarBarraNavegacion() {
+        binding.navViewStall.visibility = View.VISIBLE
     }
 }

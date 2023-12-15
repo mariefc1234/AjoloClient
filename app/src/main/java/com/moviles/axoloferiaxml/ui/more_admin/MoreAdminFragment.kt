@@ -31,9 +31,6 @@ class MoreAdminFragment : Fragment() {
             context?.startActivity(intent)
         }
 
-        //Asigna Username
-        val textViewUsername = root.findViewById<TextView>(R.id.textViewUserName)
-        textViewUsername.text = (requireActivity() as MainActivity).getUserName()
 
         //Funcion Support
         val supportBtn = root.findViewById<LinearLayout>(R.id.btnSupportAdmin)
