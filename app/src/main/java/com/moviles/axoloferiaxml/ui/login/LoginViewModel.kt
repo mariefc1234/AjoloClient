@@ -2,6 +2,7 @@ package com.moviles.axoloferiaxml.ui.login
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -15,6 +16,7 @@ import com.moviles.axoloferiaxml.MainActivityStall
 import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.core.KeystoreHelper
+import com.moviles.axoloferiaxml.data.model.User
 import com.moviles.axoloferiaxml.data.model.UserAuth
 import com.moviles.axoloferiaxml.domain.GetAuthenticationUserUseCase
 import kotlinx.coroutines.launch
@@ -39,7 +41,11 @@ class LoginViewModel() : ViewModel() {
                 val result = getAuthenticationUseCase(userAuth, keystoreHelper)
                 if (result != null) {
                     _loginResult.value =
-                        LoginResult(success = result.userData?.userInfo?.let { LoggedInUserView(displayName = it.userName) })
+                        LoginResult(success = result.userData?.userInfo?.let { LoggedInUserView(displayName = it.userName, user = it) })
+
+
+
+
                     val intent = Intent(context, MainActivity::class.java)
 
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -95,7 +101,6 @@ class LoginViewModel() : ViewModel() {
             }
         }
     }
-
 
     fun loginDataChanged(username: String, password: String) {
         if (!isUserNameValid(username)) {

@@ -2,6 +2,8 @@ package com.moviles.axoloferiaxml.data
 
 import android.util.Log
 import com.moviles.axoloferiaxml.core.KeystoreHelper
+import com.moviles.axoloferiaxml.data.model.Employee
+import com.moviles.axoloferiaxml.data.model.EmployeeProvider
 import com.moviles.axoloferiaxml.data.model.User
 import com.moviles.axoloferiaxml.data.model.UserAuth
 import com.moviles.axoloferiaxml.data.model.UserProvider
@@ -21,6 +23,15 @@ class UserRepository {
         return response
     }
 
+    suspend fun getUsersByRole(roleId: Int, keystoreHelper: KeystoreHelper): Employee? {
+        val token = keystoreHelper.getToken()
+        val response = api.getUsersByRole(token ?: "", roleId)
+        if (response != null) {
+            EmployeeProvider.user = response
+        }
+        return response
+    }
+
     suspend fun uploadImageUser(keystoreHelper: KeystoreHelper, image: MultipartBody.Part): Boolean{
         val token = keystoreHelper.getToken()
         if (token.isNullOrEmpty() || token.isNullOrBlank()){
@@ -31,5 +42,6 @@ class UserRepository {
             return  true
         }
         return false
+
     }
 }

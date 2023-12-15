@@ -1,7 +1,7 @@
 package com.moviles.axoloferiaxml.ui.home_user
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +10,21 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.google.gson.Gson
+import com.moviles.axoloferiaxml.R
+import com.moviles.axoloferiaxml.data.database.AxoloferiaDB
+import com.moviles.axoloferiaxml.data.database.StallFavorite
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentHomeUserBinding
+import com.moviles.axoloferiaxml.databinding.ItemStallBinding
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapter
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapterListener
+import kotlinx.coroutines.launch
 
 class HomeUserFragment : Fragment(), StallAdapterListener {
 
@@ -25,7 +33,7 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
     }
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private lateinit var  stallViewModel: HomeViewModel
+    private lateinit var stallViewModel: HomeViewModel
 
     private val stallList = mutableListOf<Stall.StallList.StallData>()
 
@@ -59,6 +67,14 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
 
         })
         getStalls()
+        with(binding) {
+            buttonAllStalls.setOnClickListener {
+                getStalls()
+            }
+            buttonFavoriteStalls.setOnClickListener {
+                getFavoriteStalls()
+            }
+        }
         return root
     }
 
@@ -82,13 +98,102 @@ class HomeUserFragment : Fragment(), StallAdapterListener {
     }
 
     override fun onStallSelected(stall: Stall.StallList.StallData) {
-        val intent = Intent(context, StallDetailActivity::class.java)
-        val bundle = Bundle()
         val gson = Gson()
         val stallJson = gson.toJson(stall)
-        bundle.putString("stall", stallJson)
-        intent.putExtra("stall_key",bundle)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+        Log.d("stall", stallJson)
+        val navController = findNavController(this)
+        val action = HomeUserFragmentDirections.actionHomeUserFragmentToStallDetailUserFragment(stallJson)
+        navController.navigate(action)
     }
+
+    override fun setFavouriteStall(stall: Stall.StallList.StallData, itemBinding: ItemStallBinding) {
+        val stallFavorite = getFavoriteStallById(stall.id!!)
+        if (stallFavorite == null) {
+            itemBinding.favoriteIcon.setImageResource(R.drawable.favorite_fill)
+            setFavoriteStall(stall)
+        } else {
+            itemBinding.favoriteIcon.setImageResource(R.drawable.favorite)
+            removeFavoriteStall(stallFavorite)
+        }
+    }
+
+    private fun setFavoriteStall(stall: Stall.StallList.StallData) {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+        lifecycleScope.launch {
+            val song = StallFavorite(
+                id = stall.id,
+                id_stall_type = stall.id_stall_type,
+                name = stall.name,
+                description = stall.description,
+                image_url = stall.image_url,
+                cost = stall.cost,
+                minimun_height_cm = stall.minimun_height_cm,
+                uuidEmployeer = stall.uuidEmployeer,
+                enabled = stall.enabled,
+                createdAt = stall.createdAt,
+                updatedAt = stall.updatedAt,
+            )
+            room.stallFavoriteDAO().insert(song)
+        }
+    }
+
+    private fun getFavoriteStalls() {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+        lifecycleScope.launch {
+            val favoriteStalls = room.stallFavoriteDAO().getAllStalls()
+            Log.d("stallsfavorites", favoriteStalls.toString())
+            fillFavoriteStalls(favoriteStalls)
+
+        }
+    }
+
+    private fun fillFavoriteStalls(stalls: List<StallFavorite>) {
+        stallList.clear()
+        stalls.forEach { stall ->
+            stallList.add( Stall.StallList.StallData(
+                id = stall.id,
+                id_stall_type = stall.id_stall_type ?: 0,
+                name = stall.name,
+                description = stall.description,
+                image_url = stall.image_url,
+                cost = stall.cost,
+                minimun_height_cm = stall.minimun_height_cm ?: 0,
+                uuidEmployeer = stall.uuidEmployeer ?: "",
+                enabled = stall.enabled,
+                createdAt = stall.createdAt,
+                updatedAt = stall.updatedAt,
+            ))
+        }
+        viewAdapter.notifyDataSetChanged()
+    }
+
+    private fun getFavoriteStallById(id: Int): StallFavorite? {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+        var stallFavorite: StallFavorite? = null
+        lifecycleScope.launch {
+            stallFavorite = room.stallFavoriteDAO().getStallByID(id)
+            Log.d("Songsbyid", stallFavorite.toString())
+
+        }
+        return stallFavorite
+    }
+
+    private fun removeFavoriteStall(stall: StallFavorite) {
+        val room = Room
+            .databaseBuilder(requireContext(), AxoloferiaDB::class.java, "axoloferia")
+            .build()
+
+        lifecycleScope.launch {
+            room.stallFavoriteDAO().remove(stall)
+        }
+    }
+
 }

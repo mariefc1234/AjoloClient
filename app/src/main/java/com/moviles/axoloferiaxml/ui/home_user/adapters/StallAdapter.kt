@@ -8,6 +8,7 @@ import com.moviles.axoloferiaxml.databinding.ItemStallBinding
 
 interface StallAdapterListener{
     fun onStallSelected(stall: Stall.StallList.StallData)
+    fun setFavouriteStall(stall: Stall.StallList.StallData, binding: ItemStallBinding)
 }
 
 class StallAdapter(private val items: MutableList<Stall.StallList.StallData>, private val listener: StallAdapterListener): RecyclerView.Adapter<StallViewHolder>() {

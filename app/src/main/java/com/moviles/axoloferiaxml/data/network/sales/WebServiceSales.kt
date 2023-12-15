@@ -40,10 +40,9 @@ interface WebServiceSales {
         @Body sale: SalePost
     ): Response<SalePostResponse>
 
-    @GET("shoppings/getShoppings/{uuid}")
+    @GET("shoppings/getShoppings/")
     suspend fun getShoppings(
-        @Header("authtoken") token: String?,
-        @Path("uuid") uuid: String
+        @Header("authtoken") token: String?
     ): Response<GetSalesResponse>
 
 

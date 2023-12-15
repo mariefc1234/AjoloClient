@@ -8,7 +8,14 @@
     <fragment
         android:id="@+id/homeUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.home_user.HomeUserFragment"
-        tools:layout="@layout/fragment_home_user" />
+        tools:layout="@layout/fragment_home_user" >
+        <argument
+            android:name="stall"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_homeUserFragment_to_stallDetailUserFragment"
+            app:destination="@id/stallDetailUserFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/calendarUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.calendar_user.CalendarUserFragment"
@@ -43,11 +50,48 @@
         android:id="@+id/shopCoinsUserFragment"
         android:name="com.moviles.axoloferiaxml.ui.more_user.shop_coins_user.ShopCoinsUserFragment"
         android:label="fragment_shop_coins_user"
-        tools:layout="@layout/fragment_shop_coins_user" >
+        tools:layout="@layout/fragment_shop_coins_user">
         <action
             android:id="@+id/action_shopCoinsUserFragment_to_cardUserFragment"
             app:destination="@id/cardUserFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/stallDetailUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.home_user.StallDetailFragment"
+        android:label="fragment_stall_detail"
+        tools:layout="@layout/fragment_stall_detail">
+        <argument
+            android:name="stall"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_stallDetailUserFragment_to_addReviewUserFragment"
+            app:destination="@id/addReviewUserFragment" />
+        <action
+            android:id="@+id/action_stallDetailUserFragment_to_reviewsUserFragment"
+            app:destination="@id/reviewsUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReviewUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.reviews.AddReviewFragment"
+        android:label="fragment_add_review"
+        tools:layout="@layout/fragment_add_review" >
+        <action
+            android:id="@+id/action_addReviewUserFragment_to_reviewsUserFragment"
+            app:destination="@id/reviewsUserFragment" />
+        <argument
+            android:name="review"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewsUserFragment"
+        android:name="com.moviles.axoloferiaxml.ui.reviews.ReviewsFragment"
+        android:label="fragment_reviews"
+        tools:layout="@layout/fragment_reviews" >
+        <argument
+            android:name="review"
+            app:argType="string" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/cardUserFragment"

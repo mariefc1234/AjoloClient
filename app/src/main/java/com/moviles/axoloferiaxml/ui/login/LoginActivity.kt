@@ -8,10 +8,12 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import com.moviles.axoloferiaxml.data.model.User
 import com.moviles.axoloferiaxml.databinding.ActivityLoginBinding
 
 
@@ -58,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
             }
             if (loginResult.success != null) {
                 updateUiWithUser(loginResult.success)
+                saveIdInPreferences(loginResult.success.user)
             }
             setResult(Activity.RESULT_OK)
 
@@ -97,6 +100,25 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString(), this@LoginActivity)
             }
         }
+    }
+
+    private fun saveIdInPreferences(user: User.UserData.UserInfo) {
+        val preference = "SOM"
+
+        val prefs = getSharedPreferences(preference, MODE_PRIVATE)
+        val name = prefs.getString("uuid", "NULL") ?: "NULL"
+        Log.d("uuid", name)
+
+        val editor = getSharedPreferences(preference, MODE_PRIVATE).edit()
+        editor.remove("uuid")
+        editor.apply()
+        Log.d("user id", user.uuid)
+        editor.putString("uuid", user.uuid)
+        editor.apply()
+
+        val prefs2 = getSharedPreferences(preference, MODE_PRIVATE)
+        val name2 = prefs2.getString("uuid", "NULL") ?: "NULL"
+        Log.d("uuid", name2)
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
