@@ -51,7 +51,7 @@ class UserService {
         }
     }
 
-    
+
     suspend fun uploadImageUser(token: String, image: MultipartBody.Part, uuid: String): Int? {
         return withContext(Dispatchers.IO) {
             try {
