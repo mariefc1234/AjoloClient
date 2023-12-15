@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentStallDetailBinding
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
 class StallDetailFragment : Fragment() {
     private var _binding: FragmentStallDetailBinding? = null
@@ -59,7 +60,9 @@ class StallDetailFragment : Fragment() {
             Picasso.get().load(stall?.image_url).into(stallImage)
             stallName.text = stall?.name
             stallPrice.text = "$ ${stall?.cost}"
-            stallStars.text = stall?.id_stall_type.toString()
+            val format = DecimalFormat("#.00")
+
+            stallStars.text = format.format(stall?.points).toString()
             stallDescription.text = stall?.description
         }
     }

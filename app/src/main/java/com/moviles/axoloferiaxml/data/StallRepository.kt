@@ -7,6 +7,7 @@ import com.moviles.axoloferiaxml.data.model.GenericResponseProvider
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.data.model.StallCreate
 import com.moviles.axoloferiaxml.data.model.StallProvider
+import com.moviles.axoloferiaxml.data.model.StallUpdate
 import com.moviles.axoloferiaxml.data.model.UserProvider
 import com.moviles.axoloferiaxml.data.network.StallService
 
@@ -31,7 +32,7 @@ class StallRepository {
         return response
     }
 
-    suspend fun updateStall(stall: StallCreate, keystoreHelper: KeystoreHelper) : GenericResponse? {
+    suspend fun updateStall(stall: StallUpdate, keystoreHelper: KeystoreHelper) : GenericResponse? {
         val token = keystoreHelper.getToken()
         val response = api.updateStall(stall, token ?: "")
         if(response != null){

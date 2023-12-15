@@ -76,6 +76,7 @@ class HomeViewModel : ViewModel(){
                 enabled = stall.enabled,
                 createdAt = stall.createdAt,
                 updatedAt = stall.updatedAt,
+                points = stall.points
             )
             room.stallFavoriteDAO().insert(stallInsert)
         }

@@ -11,6 +11,7 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.moviles.axoloferiaxml.R
@@ -19,6 +20,7 @@ import com.moviles.axoloferiaxml.data.model.Review
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.FragmentAddReviewBinding
 import com.moviles.axoloferiaxml.databinding.FragmentHomeUserBinding
+import com.moviles.axoloferiaxml.ui.home_user.HomeUserFragmentDirections
 import com.moviles.axoloferiaxml.ui.home_user.HomeViewModel
 import com.moviles.axoloferiaxml.ui.home_user.StallDetailFragmentArgs
 import com.moviles.axoloferiaxml.ui.home_user.adapters.StallAdapter
@@ -62,7 +64,10 @@ class AddReviewFragment: Fragment() {
             starsIcon3.setOnClickListener { fillStars(2) }
             starsIcon4.setOnClickListener { fillStars(3) }
             starsIcon5.setOnClickListener { fillStars(4) }
-            buttonPublishReview.setOnClickListener { publisReview() }
+            buttonPublishReview.setOnClickListener {
+                buttonPublishReview.isEnabled = false
+                publisReview()
+            }
         }
         return root
     }
@@ -70,6 +75,9 @@ class AddReviewFragment: Fragment() {
     private fun publisReview() {
         val publishReview: PublishReview = getData()
         reviewViewModel.sendReview(publishReview, this.requireContext())
+        val navController = NavHostFragment.findNavController(this)
+        val action = AddReviewFragmentDirections.actionAddReviewUserFragmentToHomeUserFragment()
+        navController.navigate(action)
     }
 
     private fun fillStars(points: Int) {
@@ -79,7 +87,7 @@ class AddReviewFragment: Fragment() {
             binding.stars.get(i).setBackgroundResource(R.drawable.star_fill)
             stars += 1.0
         }
-        stars += 1.0
+        stars -= 1.0
     }
 
     private fun getData(): PublishReview {
@@ -95,21 +103,8 @@ class AddReviewFragment: Fragment() {
         return stall
     }
 
-//    private fun getPoints(): Double {
-//        var count: Double = 0.0
-////        val starFill = ContextCompat.getDrawable(requireContext(), R.drawable.star_fill)
-////        val starMiddle = ContextCompat.getDrawable(requireContext(), R.drawable.midle_star)
-//        binding.stars.forEach {
-//            if (it.background == starFill) {
-//                count += 1.0
-//            }
-//        }
-//        Log.d("points", count.toString())
-//        return count
-//    }
-
     private fun sendReviewSuccess(success: Any) {
-        TODO("Not yet implemented")
+
     }
 
     private fun showReviewFailed(error: Any) {

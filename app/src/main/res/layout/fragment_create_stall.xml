@@ -131,7 +131,6 @@
     </LinearLayout>
 
 
-
     <Button
         android:id="@+id/stall_save"
         android:layout_width="300dp"
@@ -142,12 +141,5 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:visibility="gone"
-        android:text="Save" />
-    <Button
-        android:id="@+id/stall_cancel"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/color_tertiary"
-        android:text="Cancel" />
-
+        android:text="update" />
 </LinearLayout>
