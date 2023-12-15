@@ -59,6 +59,7 @@ class LoginViewModel() : ViewModel() {
                                 intent.putExtra("userName", userInfo.userName)
                                 intent.putExtra("uuid", userInfo.uuid)
                                 intent.putExtra("coins", userInfo.coins.toString())
+                                intent.putExtra("imgUrl", userInfo.imageUrl)
                                 context.startActivity(intent)
                             }
                             //admin
