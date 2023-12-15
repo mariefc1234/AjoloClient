@@ -3,8 +3,10 @@ package com.moviles.axoloferiaxml.ui.more_user
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
@@ -21,16 +23,24 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import com.moviles.axoloferiaxml.MainActivityUser
 import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.ui.login.LoginActivity
 import com.moviles.axoloferiaxml.ui.more_admin.MoreAdminViewModel
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
+import java.io.File
 
 class MoreUserFragment : Fragment() {
 
@@ -54,6 +64,33 @@ class MoreUserFragment : Fragment() {
         } else {
             // Permiso denegado, puedes manejarlo de acuerdo a tus necesidades.
             Toast.makeText(requireContext(), "Permiso de cámara denegado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val galleryPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+        if (isGranted) {
+            openGallery()
+        } else {
+            Toast.makeText(requireContext(), "Permiso de galería denegado", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            GALLERY_PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permiso concedido, puedes acceder al archivo y procesar la imagen
+                    openGallery()
+                } else {
+                    // Permiso denegado, puedes manejarlo de acuerdo a tus necesidades
+                    Toast.makeText(requireContext(), "Permiso de galería denegado", Toast.LENGTH_SHORT).show()
+                }
+            }
+            // Otros casos si tienes más permisos
         }
     }
 
@@ -100,7 +137,7 @@ class MoreUserFragment : Fragment() {
 
         val imageViewProfile = root.findViewById<ImageView>(R.id.user_image)
         viewModel = ViewModelProvider(this).get(MoreUserViewModel::class.java)
-        viewModel.loadImageIntoImageView(imageViewProfile)
+        viewModel.loadImageIntoImageView(imageViewProfile, (requireActivity() as MainActivityUser).getUserImgUrl())
 
         val editIcon = root.findViewById<ImageView>(R.id.editIcon)
 
@@ -109,24 +146,37 @@ class MoreUserFragment : Fragment() {
                 val data: Intent? = result.data
                 data?.data?.let { selectedImageUri ->
                     imageViewProfile.setImageURI(selectedImageUri)
-                    context?.let {
-                        val imageMultipart: MultipartBody.Part? = viewModel.uriToMultipartBody(selectedImageUri, it)
-                        if (imageMultipart != null) {
-                            viewModel.viewModelScope.launch {
-                                viewModel.updateProfileImageUri(imageMultipart, it)
+                    val imagePath = getPathFromUri(requireContext(), selectedImageUri)
+                    //Log.d("FilePath", "Image Path: $imagePath")
+                    val imageFile = File(imagePath)
+                    if (imageFile.exists()) {
+                        context?.let {
+                            //Log.d("SelectedImageUri", selectedImageUri.toString())
+                            val imageMultipart: MultipartBody.Part? = viewModel.uriToMultipartBody(selectedImageUri, it)
+                            if (imageMultipart != null) {
+                                viewModel.viewModelScope.launch {
+                                    try {
+                                        val userUuid = (requireActivity() as MainActivityUser).getUserUuid()
+                                        viewModel.updateProfileImageUri(userUuid, imageMultipart, it)
+
+                                        Toast.makeText(requireContext(), "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
+                                    } catch (e: Exception) {
+                                        Toast.makeText(requireContext(), "Error al actualizar la imagen: ${e.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(requireContext(), "Error al convertir la imagen", Toast.LENGTH_SHORT).show()
                             }
-                            Toast.makeText(requireContext(), "Todo bien", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(requireContext(), "Error al convertir la imagen", Toast.LENGTH_SHORT).show()
                         }
+                    } else {
+                        Toast.makeText(requireContext(), "Archivo de imagen no encontrado en la ruta: $imagePath", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
 
         editIcon.setOnClickListener {
-            showImageSelectionDialog()
-            Toast.makeText(requireContext(), "Editar perfil", Toast.LENGTH_SHORT).show()
+            checkCameraPermission()
         }
 
         return root
@@ -136,6 +186,19 @@ class MoreUserFragment : Fragment() {
         super.onResume()
         val tuActividad = activity as MainActivityUser
         tuActividad.mostrarBarraNavegacion()
+    }
+
+    fun getPathFromUri(context: Context, uri: Uri): String? {
+        var filePath: String? = null
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor: Cursor? = context.contentResolver.query(uri, projection, null, null, null)
+        cursor?.use {
+            if (it.moveToFirst()) {
+                val columnIndex: Int = it.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                filePath = it.getString(columnIndex)
+            }
+        }
+        return filePath
     }
 
     private fun showImageSelectionDialog() {
@@ -158,21 +221,18 @@ class MoreUserFragment : Fragment() {
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         resultLauncher.launch(intent)
-    }
-
-    companion object {
-        private const val PICK_IMAGE_REQUEST = 1
+        //val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+        //intent.addCategory(Intent.CATEGORY_OPENABLE)
+        //intent.type = "image/*"
+        //resultLauncher.launch(intent)
     }
 
     private fun processCapturedImage(result: Bitmap) {
-        // La imagen ha sido capturada con éxito. Puedes manejar la imagen aquí.
-        // La variable 'result' contiene la imagen como un Bitmap.
         val imageMultipart: MultipartBody.Part? = viewModel.bitmapToMultipartBody(result, requireContext())
         if (imageMultipart != null) {
             viewModel.viewModelScope.launch {
-                viewModel.updateProfileImageUri(imageMultipart, requireContext())
+                viewModel.updateProfileImageUri((requireActivity() as MainActivityUser).getUserUuid(), imageMultipart, requireContext())
             }
-
             val imageViewProfile = requireView().findViewById<ImageView>(R.id.user_image)
             imageViewProfile.setImageBitmap(result)
 
@@ -182,18 +242,73 @@ class MoreUserFragment : Fragment() {
         }
     }
 
+
+    private val GALLERY_PERMISSION_REQUEST_CODE = 123
+
+    private fun checkGalleryPermission() {
+        /*if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            // Permiso concedido, puedes acceder a la galería.
+            openGallery()
+        } else {
+            // No se tiene el permiso, solicítalo.
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                GALLERY_PERMISSION_REQUEST_CODE
+            )
+        }
+         */
+        Dexter.withContext(requireContext())
+            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
+                    openGallery()
+                }
+
+                override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {
+                    Toast.makeText(requireContext(), "Permiso Denegado", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissionRequest: PermissionRequest,
+                    permissionToken: PermissionToken
+                ) {
+                    permissionToken.continuePermissionRequest()
+                }
+            })
+            .check()
+    }
+
+    private fun checkGP() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED) {
+            openGallery()
+        } else {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                GALLERY_PERMISSION_REQUEST_CODE
+            )
+        }
+    }
+
+
+
     private fun checkCameraPermission() {
-        Log.d("MyApp", "Checking camera permission")
         when {
             ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
-                // Permiso ya concedido, puedes proceder con la lógica de la cámara.
                 openCamera()
             }
             else -> {
-                // Solicitar permiso de cámara utilizando el nuevo enfoque de ActivityResultContracts.
                 cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
             }
         }

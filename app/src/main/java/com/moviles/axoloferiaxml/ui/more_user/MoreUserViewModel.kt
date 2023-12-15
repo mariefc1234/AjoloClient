@@ -4,6 +4,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
 import android.net.Uri
+import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.ImageView
 import androidx.lifecycle.ViewModel
@@ -20,11 +21,10 @@ import java.io.IOException
 
 class MoreUserViewModel: ViewModel() {
 
-    private var imageUrl = "https://img.freepik.com/vector-gratis/adorable-ilustracion-ajolote-marino_23-2149222000.jpg"
     private val getUploadImageUser = GetUploadImageUser()
 
-    fun loadImageIntoImageView(imageView: ImageView) {
-        Picasso.get().load(imageUrl).into(imageView)
+    fun loadImageIntoImageView(imageView: ImageView, imgUrl: String) {
+        Picasso.get().load(imgUrl).into(imageView)
     }
 
     fun uriToMultipartBody(uri: Uri, context: Context): MultipartBody.Part? {
@@ -71,15 +71,13 @@ class MoreUserViewModel: ViewModel() {
     }
 
 
-    suspend fun updateProfileImageUri(image: MultipartBody.Part, context: Context) {
+    suspend fun updateProfileImageUri(uuid: String, image: MultipartBody.Part, context: Context) {
         val keystoreHelper = KeystoreHelper(context)
-        val result = getUploadImageUser(keystoreHelper, image)
+        val result = getUploadImageUser(keystoreHelper, image, uuid)
+        Log.d("IMGURL_VM", "updateProfileImageUri result: $result")
     }
 
     private var capturedImageUri: Uri? = null
 
-    fun getCapturedImageUri(): Uri? {
-        return capturedImageUri
-    }
 
 }
