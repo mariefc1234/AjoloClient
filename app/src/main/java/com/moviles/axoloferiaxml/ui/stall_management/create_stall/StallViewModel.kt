@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moviles.axoloferiaxml.core.KeystoreHelper
 import com.moviles.axoloferiaxml.data.model.StallCreate
+import com.moviles.axoloferiaxml.data.model.StallUpdate
 import com.moviles.axoloferiaxml.domain.CreateStallUseCase
 import com.moviles.axoloferiaxml.domain.DeleteStallUseCase
 import com.moviles.axoloferiaxml.domain.GetUsersByRoleListUseCase
@@ -74,7 +75,7 @@ class StallViewModel: ViewModel() {
         }
     }
 
-    fun updateStall(stall: StallCreate, context: Context) {
+    fun updateStall(stall: StallUpdate, context: Context) {
         viewModelScope.launch {
             try {
                 val keystoreHelper = KeystoreHelper(context)

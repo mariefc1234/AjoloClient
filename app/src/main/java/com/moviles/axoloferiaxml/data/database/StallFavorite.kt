@@ -17,5 +17,6 @@ data class StallFavorite (
     val uuidEmployeer: String?,
     val enabled: String?,
     val createdAt: String?,
-    val updatedAt: String?
+    val updatedAt: String?,
+    val points: Double?
 )

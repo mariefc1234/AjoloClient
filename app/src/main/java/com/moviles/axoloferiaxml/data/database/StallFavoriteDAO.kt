@@ -16,9 +16,9 @@ interface StallFavoriteDAO {
 
     @Delete
     suspend fun remove(stall: StallFavorite)
-//
-//    @Query("DELETE FROM StallFavorite WHERE id = :id")
-//    suspend fun removeByID(id: Int)
+
+    @Query("DELETE FROM StallFavorite")
+    suspend fun removeAll()
 
     @Query("SELECT * FROM StallFavorite WHERE id = :id")
     suspend fun getStallByID(id: Int): StallFavorite

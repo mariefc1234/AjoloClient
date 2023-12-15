@@ -7,6 +7,7 @@ import com.moviles.axoloferiaxml.R
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.databinding.ItemStallBinding
 import com.squareup.picasso.Picasso
+import java.text.DecimalFormat
 
 class StallViewHolder(private val binding: ItemStallBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bindData(stall: Stall.StallList.StallData, listener: StallAdapterListener){
@@ -15,7 +16,9 @@ class StallViewHolder(private val binding: ItemStallBinding) : RecyclerView.View
             Picasso.get().load(stall?.image_url).into(image)
             name.text = stall?.name
             price.text = "$ ${stall?.cost}"
-            starsLabel.text = stall?.id_stall_type.toString()
+            val format = DecimalFormat("#.00")
+
+            starsLabel.text = format.format(stall?.points).toString()
             description.text = stall?.description
 
             favoriteIcon.setOnClickListener {

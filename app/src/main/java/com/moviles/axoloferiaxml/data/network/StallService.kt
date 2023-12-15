@@ -7,6 +7,7 @@ import com.moviles.axoloferiaxml.core.RetrofitHelper
 import com.moviles.axoloferiaxml.data.model.GenericResponse
 import com.moviles.axoloferiaxml.data.model.Stall
 import com.moviles.axoloferiaxml.data.model.StallCreate
+import com.moviles.axoloferiaxml.data.model.StallUpdate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.create
@@ -18,6 +19,7 @@ class StallService {
 
         return withContext(Dispatchers.IO) {
             val response = retrofit.create(StallAPIClient::class.java).getStall(token)
+            Log.d("stallerror", response.raw().request().toString())
             if (response.isSuccessful) {
                 response.body()
             } else {
@@ -29,6 +31,8 @@ class StallService {
     suspend fun createStall(stall: StallCreate, token: String): GenericResponse? {
         return withContext(Dispatchers.IO) {
             val response = retrofit.create(StallAPIClient::class.java).createStall(stall, token)
+            Log.d("stallerror", response.toString())
+            Log.d("stallerror", response.raw().request().toString())
             if (response.isSuccessful) {
                 response.body()
             } else {
@@ -37,9 +41,10 @@ class StallService {
         }
     }
 
-    suspend fun updateStall(stall: StallCreate, token: String): GenericResponse? {
+    suspend fun updateStall(stall: StallUpdate, token: String): GenericResponse? {
         return withContext(Dispatchers.IO) {
             val response = retrofit.create(StallAPIClient::class.java).updateStall(stall, stall.id!!, token)
+            Log.d("stallerror", response.raw().request().toString())
             if (response.isSuccessful) {
                 response.body()
             } else {
